@@ -2,18 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
-
+        android:id="@+id/news_bottom_navigation_item"
+        android:icon="@drawable/news"
+        android:state_checked="false"
+        android:title="@string/news_text_bottom_navigation"/>
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
-
+        android:id="@+id/search_bottom_navigation_item"
+        android:icon="@drawable/searh"
+        android:state_checked="false"
+        android:title="@string/search_text_bottom_navigation"/>
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/help_bottom_navigation_item"
+        android:icon="@drawable/heart"
+        android:state_checked="false"
+        android:title="@string/help_text_bottom_navigation"/>
+    <item
+        android:id="@+id/history_bottom_navigation_item"
+        android:icon="@drawable/history"
+        android:state_checked="false"
+        android:title="@string/history_text_bottom_navigation"/>
+    <item
+        android:id="@+id/profile_bottom_navigation_item"
+        android:icon="@drawable/profile"
+        android:state_checked="true"
+        android:title="@string/profile_text_bottom_navigation"/>
+
+
 
 </menu>
