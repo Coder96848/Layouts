@@ -1,22 +1,16 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/leaf</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/turtle_green</item>
     </style>
 
-    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+    <style name="CircularProgress" parent="Theme.MaterialComponents.Light">
         <item name="colorAccent">@color/turtle_green</item>
     </style>
 
-    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/leaf</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/turtle_green</item>
-    </style>
-
-    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+    <style name="SwitchTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorControlActivated">@color/leaf</item>
         <item name="android:colorForeground">@android:color/darker_gray</item>
     </style>
@@ -25,11 +19,6 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">21sp</item>
         <item name="android:textColor">@color/white</item>
-    </style>
-    <style name="TextStyle">
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/light_olive_green</item>
     </style>
     <style name="TextStyle3">
         <item name="android:gravity">center_horizontal</item>
@@ -40,7 +29,7 @@
         <item name="android:textColor">#b3000000</item>
     </style>
 
-    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
+    <style name="BottomNavigationTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/leaf</item>
         <item name="android:textColorSecondary">@color/black___40</item>
     </style>

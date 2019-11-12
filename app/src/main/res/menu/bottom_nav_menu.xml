@@ -8,7 +8,7 @@
         android:title="@string/news_text_bottom_navigation"/>
     <item
         android:id="@+id/search_bottom_navigation_item"
-        android:icon="@drawable/searh"
+        android:icon="@drawable/search"
         android:state_checked="false"
         android:title="@string/search_text_bottom_navigation"/>
     <item

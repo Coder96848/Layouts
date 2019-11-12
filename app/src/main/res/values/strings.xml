@@ -19,6 +19,5 @@
     <string name="activity_profile_1_text_view_text">Дмитрий Валерьевич</string>
     <string name="activity_profile_2_text_view_text">Евгений Александров</string>
     <string name="activity_profile_3_text_view_text">Виктор Кузнецов</string>
-    <string name="title_activity_main">MainActivity</string>
 
 </resources>

@@ -44,10 +44,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/image_man"
+                android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription"/>
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/full_name_text_view"
@@ -64,7 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/image_man_image_view" />
 
             <TextView
-                android:id="@+id/birhday_text_view"
+                android:id="@+id/born_day_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_profile_birthday_text_view_margin_start"
@@ -78,7 +79,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/full_name_text_view" />
 
             <TextView
-                android:id="@+id/value_date_birhday_text_view"
+                android:id="@+id/value_date_born_day_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_profile_value_date_birthday_text_view_margin_start"
@@ -88,7 +89,7 @@
                 android:textSize="@dimen/activity_profile_value_date_birthday_text_view_text_size"
                 android:textColor="@color/black__87"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/birhday_text_view" />
+                app:layout_constraintTop_toBottomOf="@+id/born_day_text_view" />
 
             <TextView
                 android:id="@+id/field_activity_text_view"
@@ -102,7 +103,7 @@
                 android:textSize="@dimen/activity_profile_field_activity_text_view_text_size"
                 android:textColor="@color/black__38"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/value_date_birhday_text_view" />
+                app:layout_constraintTop_toBottomOf="@+id/value_date_born_day_text_view" />
 
             <TextView
                 android:id="@+id/value_field_activity_text_view"
