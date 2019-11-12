@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Layouts</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="loading_text">Загрузка…</string>
+    <string name="news_text_bottom_navigation">Новости</string>
+    <string name="search_text_bottom_navigation">Поиск</string>
+    <string name="help_text_bottom_navigation">Помощь</string>
+    <string name="history_text_bottom_navigation">История</string>
+    <string name="profile_text_bottom_navigation">Профиль</string>
+    <string name="toolbar_title">Профиль</string>
+    <string name="profile_exit_text_button">Выйти из аккаунта</string>
+    <string name="activity_profile_full_name_text_view_text">Константинов Денис</string>
+    <string name="activity_profile_birthday_text_view_text">Дата рождения</string>
+    <string name="activity_profile_value_date_birthday_text_view_text">01 февраля 1980</string>
+    <string name="activity_profile_field_activity_text_view_text">Сфера деятельности</string>
+    <string name="activity_profile_value_field_activity_text_view_text">Хирургия, травмотология</string>
+    <string name="activity_profile_push_text_view_text">Получать push-уведомления</string>
+    <string name="activity_profile_friends_text_view_text">Ваши друзья</string>
+    <string name="activity_profile_1_text_view_text">Дмитрий Валерьевич</string>
+    <string name="activity_profile_2_text_view_text">Евгений Александров</string>
+    <string name="activity_profile_3_text_view_text">Виктор Кузнецов</string>
+
 </resources>

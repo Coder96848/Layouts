@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/news_bottom_navigation_item"
+        android:icon="@drawable/news"
+        android:state_checked="false"
+        android:title="@string/news_text_bottom_navigation"/>
+    <item
+        android:id="@+id/search_bottom_navigation_item"
+        android:icon="@drawable/search"
+        android:state_checked="false"
+        android:title="@string/search_text_bottom_navigation"/>
+    <item
+        android:id="@+id/help_bottom_navigation_item"
+        android:icon="@drawable/heart"
+        android:state_checked="false"
+        android:title="@string/help_text_bottom_navigation"/>
+    <item
+        android:id="@+id/history_bottom_navigation_item"
+        android:icon="@drawable/history"
+        android:state_checked="false"
+        android:title="@string/history_text_bottom_navigation"/>
+    <item
+        android:id="@+id/profile_bottom_navigation_item"
+        android:icon="@drawable/profile"
+        android:state_checked="true"
+        android:title="@string/profile_text_bottom_navigation"/>
+
+
+
+</menu>
