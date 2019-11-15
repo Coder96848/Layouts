@@ -40,9 +40,9 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/image_man_image_view"
+                android:id="@+id/profile_photo_image_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/activity_profile_profile_photo_image_view_layout_height"
                 android:src="@drawable/image_man"
                 android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
                 android:textSize="@dimen/activity_profile_full_name_text_view_text_size"
                 android:textColor="@color/black__87"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_man_image_view" />
+                app:layout_constraintTop_toBottomOf="@+id/profile_photo_image_view" />
 
             <TextView
                 android:id="@+id/born_day_text_view"
@@ -142,7 +142,7 @@
                 android:theme="@style/SwitchTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_man_image_view"/>
+                app:layout_constraintTop_toBottomOf="@+id/profile_photo_image_view"/>
 
             <View
                 android:id="@+id/divider_info"
@@ -251,8 +251,8 @@
 
             <Button
                 android:id="@+id/exit_acc_button"
-                android:layout_width="@dimen/activity_exit_acc_button_layout_width"
-                android:layout_height="@dimen/activity_exit_acc_button_layout_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="@dimen/activity_exit_acc_button_margin_start"
                 android:layout_marginTop="@dimen/activity_exit_acc_button_margin_top"

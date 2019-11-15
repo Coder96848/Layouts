@@ -60,6 +60,25 @@
     <dimen name="activity_exit_acc_button_margin_end">97dp</dimen>
     <dimen name="activity_exit_acc_button_text_size">14sp</dimen>
     <dimen name="activity_exit_acc_button_margin_bottom">38dp</dimen>
-    <dimen name="activity_exit_acc_button_layout_width">166dp</dimen>
-    <dimen name="activity_exit_acc_button_layout_height">36dp</dimen>
+    <dimen name="change_photo_dialog_upload_image_view_margin_start">24dp</dimen>
+    <dimen name="change_photo_dialog_upload_image_view_margin_top">32dp</dimen>
+    <dimen name="change_photo_dialog_upload_text_view_margin_start">24dp</dimen>
+    <dimen name="change_photo_dialog_upload_text_view_margin_top">31dp</dimen>
+    <dimen name="change_photo_dialog_upload_text_view_margin_end">91dp</dimen>
+    <dimen name="change_photo_dialog_upload_text_view_text_size">22sp</dimen>
+    <dimen name="change_photo_dialog_camera_image_view_margin_start">24dp</dimen>
+    <dimen name="change_photo_dialog_camera_image_view_margin_top">44dp</dimen>
+    <dimen name="change_photo_dialog_delete_image_view_margin_start">24dp</dimen>
+    <dimen name="change_photo_dialog_delete_image_view_margin_top">44dp</dimen>
+    <dimen name="change_photo_dialog_delete_image_view_margin_bottom">28dp</dimen>
+    <dimen name="change_photo_dialog_camera_text_view_margin_start">24dp</dimen>
+    <dimen name="change_photo_dialog_camera_text_view_margin_top">37dp</dimen>
+    <dimen name="change_photo_dialog_camera_text_view_margin_end">68dp</dimen>
+    <dimen name="change_photo_dialog_camera_text_view_text_size">22sp</dimen>
+    <dimen name="change_photo_dialog_delete_text_view_text_size">22sp</dimen>
+    <dimen name="change_photo_dialog_delete_text_view_margin_bottom">28dp</dimen>
+    <dimen name="change_photo_dialog_delete_text_view_margin_end">150dp</dimen>
+    <dimen name="change_photo_dialog_delete_text_view_margin_top">43dp</dimen>
+    <dimen name="change_photo_dialog_delete_text_view_margin_start">24dp</dimen>
+    <dimen name="activity_profile_profile_photo_image_view_layout_height">220dp</dimen>
 </resources>
