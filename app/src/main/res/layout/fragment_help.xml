@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/fragment_help_category_help_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fragment_help_category_help_text_view_layout_margin_start"
+        android:layout_marginTop="@dimen/fragment_help_category_help_text_view_layout_margin_top"
+        android:layout_marginEnd="@dimen/fragment_help_category_help_text_view_layout_margin_end"
+        android:text="@string/fragment_help_category_help_text_view_text"
+        android:textSize="@dimen/fragment_help_category_help_text_view_text_size"
+        android:textColor="@color/black__87" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_help_category_help_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/fragment_help_category_help_recycler_view_margin_top"
+        android:layout_marginEnd="@dimen/fragment_help_category_help_recycler_view_margin_end">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>

@@ -1,5 +1,4 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="splash_screen_text_view_margin_start">146dp</dimen>
     <dimen name="splash_screen_text_view_margin_top">141dp</dimen>
     <dimen name="splash_screen_text_view_margin_end">146dp</dimen>
@@ -81,4 +80,18 @@
     <dimen name="change_photo_dialog_delete_text_view_margin_top">43dp</dimen>
     <dimen name="change_photo_dialog_delete_text_view_margin_start">24dp</dimen>
     <dimen name="activity_profile_profile_photo_image_view_layout_height">220dp</dimen>
+    <dimen name="fragment_help_category_help_text_view_layout_margin_start">68dp</dimen>
+    <dimen name="fragment_help_category_help_text_view_layout_margin_top">19dp</dimen>
+    <dimen name="fragment_help_category_help_text_view_layout_margin_end">68dp</dimen>
+    <dimen name="fragment_help_category_help_text_view_text_size">16sp</dimen>
+    <dimen name="fragment_help_category_help_recycler_view_margin_top">20dp</dimen>
+    <dimen name="fragment_help_category_help_recycler_view_margin_end">8dp</dimen>
+    <dimen name="fragment_help_item_card_view_layout_width">168dp</dimen>
+    <dimen name="fragment_help_item_card_view_layout_height">128dp</dimen>
+    <dimen name="fragment_help_item_card_view_layout_margin_start">8dp</dimen>
+    <dimen name="fragment_help_item_card_view_layout_margin_bottom">8dp</dimen>
+    <dimen name="help_item_card_view_image_view_layout_margin_start">24dp</dimen>
+    <dimen name="help_item_card_view_image_view_layout_margin_end">24dp</dimen>
+    <dimen name="help_item_card_view_image_view_layout_margin_top">12dp</dimen>
+    <dimen name="help_item_card_view_text_view_layout_margin_top">12dp</dimen>
 </resources>

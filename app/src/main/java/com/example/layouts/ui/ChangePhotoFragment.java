@@ -37,7 +37,7 @@ public class ChangePhotoFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.profile_change_photo_dialog, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_change_photo_dialog, container, false);
 
         TextView cameraTextView = view.findViewById(R.id.change_photo_dialog_camera_text_view);
         cameraTextView.setOnClickListener(new View.OnClickListener() {

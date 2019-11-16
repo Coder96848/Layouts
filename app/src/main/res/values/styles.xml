@@ -15,6 +15,12 @@
         <item name="android:colorForeground">@android:color/darker_gray</item>
     </style>
 
+    <style name="TextStyle">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/light_olive_green</item>
+    </style>
+
     <style name="TextStyle2">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">21sp</item>

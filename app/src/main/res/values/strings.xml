@@ -7,7 +7,7 @@
     <string name="help_text_bottom_navigation">Помощь</string>
     <string name="history_text_bottom_navigation">История</string>
     <string name="profile_text_bottom_navigation">Профиль</string>
-    <string name="toolbar_title">Профиль</string>
+    <string name="toolbar_title">Помочь</string>
     <string name="profile_exit_text_button">Выйти из аккаунта</string>
     <string name="activity_profile_full_name_text_view_text">Константинов Денис</string>
     <string name="activity_profile_birthday_text_view_text">Дата рождения</string>
@@ -22,5 +22,6 @@
     <string name="change_photo_dialog_upload_text_view_text">Выбрать фото</string>
     <string name="change_photo_dialog_camera_text_view_text">Сделать снимок</string>
     <string name="change_photo_dialog_delete_text_view_text">Удалить</string>
+    <string name="fragment_help_category_help_text_view_text">Выберите категорию помощи</string>
 
 </resources>
