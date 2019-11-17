@@ -27,6 +27,4 @@
         android:state_checked="true"
         android:title="@string/profile_text_bottom_navigation"/>
 
-
-
 </menu>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/fragment_search_recycler_view_item_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_search_recycler_view_item_text_view_layout_margin_start"
+            android:layout_marginTop="@dimen/fragment_search_recycler_view_item_text_view_layout_margin_top"
+            android:layout_marginEnd="@dimen/fragment_search_recycler_view_item_text_view_layout_margin_end"
+            android:layout_marginBottom="@dimen/fragment_search_recycler_view_item_text_view_layout_margin_bottom"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/black__87"
+            android:textSize="@dimen/fragment_search_recycler_view_item_text_view_text_size"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/fragment_search_recycler_view_item_image_view"
+            android:layout_width="@dimen/fragment_search_recycler_view_item_image_view_layout_width"
+            android:layout_height="@dimen/fragment_search_recycler_view_item_image_view_layout_height"
+            android:layout_marginTop="@dimen/fragment_search_recycler_view_item_image_view_layout_margin_top"
+            android:layout_marginEnd="@dimen/fragment_search_recycler_view_item_image_view_layout_margin_end"
+            android:layout_marginBottom="@dimen/fragment_search_recycler_view_item_image_view_layout_margin_bottom"
+            android:src="@drawable/icon_chevron_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_search_recycler_view_item_view_layout_height"
+            android:layout_marginStart="@dimen/fragment_search_recycler_view_item_view_layout_margin_start"
+            android:layout_marginTop="@dimen/fragment_search_recycler_view_item_view_layout_margin_top"
+            android:background="@color/black__38"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

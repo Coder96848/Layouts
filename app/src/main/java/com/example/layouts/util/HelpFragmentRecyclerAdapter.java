@@ -11,22 +11,22 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
-import com.example.layouts.model.CardsHelpData;
+import com.example.layouts.model.CardHelpData;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CardHelpViewHolder> {
+public class HelpFragmentRecyclerAdapter extends RecyclerView.Adapter<HelpFragmentRecyclerAdapter.CardHelpViewHolder> {
 
-    private List<CardsHelpData> cards;
+    private List<CardHelpData> cards;
 
-    public RecyclerAdapter(List<CardsHelpData> cards){
+    public HelpFragmentRecyclerAdapter(List<CardHelpData> cards){
         this.cards = cards;
     }
 
     @NonNull
     @Override
     public CardHelpViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_help_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_help_recycler_view_item, parent, false);
         return new CardHelpViewHolder(view);
     }
 

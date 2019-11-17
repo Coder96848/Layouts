@@ -11,5 +11,9 @@
     <color name="leaf">#66a636</color>
     <color name="black___12">#1e000000</color>
     <color name="light_olive_green">#9ebf50</color>
+    <color name="light_grey_two">#e8eded</color>
+    <color name="black__54">#8a000000</color>
+    <color name="macaroni_and_cheese">#f2b630</color>
+    <color name="white_70">#b3ffffff</color>
 
 </resources>
