@@ -18,7 +18,7 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/BottomNavigationTheme"
+        android:theme="@style/HelperBottomNavigation"
         android:background="@color/white"
         app:menu="@menu/bottom_navigation_menu"
         app:labelVisibilityMode="labeled"/>

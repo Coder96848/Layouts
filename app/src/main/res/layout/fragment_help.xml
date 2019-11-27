@@ -19,8 +19,8 @@
                 android:id="@+id/help_fragment_toolbar_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/TextStyle2"
-                android:text="@string/help_fragment_toolbar_title"/>
+                android:textAppearance="@style/HelperText.Title3"
+                android:text="@string/help_text"/>
 
         </LinearLayout>
 
@@ -34,13 +34,13 @@
         android:layout_marginTop="@dimen/fragment_help_category_help_text_view_layout_margin_top"
         android:layout_marginEnd="@dimen/fragment_help_category_help_text_view_layout_margin_end"
         android:text="@string/fragment_help_category_help_text_view_text"
-        android:textSize="@dimen/fragment_help_category_help_text_view_text_size"
-        android:textColor="@color/black__87" />
+        android:textAppearance="@style/HelperText.Body1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_help_category_help_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="@dimen/fragment_help_category_help_recycler_view_margin_top"
         android:layout_marginEnd="@dimen/fragment_help_category_help_recycler_view_margin_end">
 

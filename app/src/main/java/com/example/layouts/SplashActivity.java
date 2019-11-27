@@ -14,10 +14,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        startProfileActivity(this);
+        startMainActivity(this);
     }
 
-    private void startProfileActivity(final Context context){
+    private void startMainActivity(final Context context){
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

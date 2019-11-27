@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,57 +10,20 @@
         android:layout_height="wrap_content"
         android:background="@color/leaf">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/fragment_search_toolbar_constraint_layout_margin_start"
-                    android:layout_marginEnd="@dimen/fragment_search_toolbar_constraint_layout_margin_end"
-                    android:layout_marginTop="@dimen/fragment_search_toolbar_constraint_layout_margin_top"
-                    android:background="@drawable/border_search_view"
-                    android:shadowColor="@color/black___12">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
 
-                    <SearchView
-                        android:id="@+id/fragment_search_toolbar_search_view"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/profile_fragment_toolbar_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                style="@style/HelperText.Title3"
+                android:text="@string/search_text"/>
 
-                    <EditText
-                        android:id="@+id/fragment_search_toolbar_search_view_edit_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/fragment_search_toolbar_edit_text_layout_margin_start"
-                        android:layout_marginTop="@dimen/fragment_search_toolbar_edit_text_layout_margin_top"
-                        android:layout_marginBottom="@dimen/fragment_search_toolbar_edit_text_layout_margin_bottom"
-                        android:background="@color/white"
-                        android:fontFamily="sans-serif"
-                        android:lineSpacingExtra="@dimen/fragment_search_toolbar_edit_text_line_spacing_extra"
-                        android:textColor="@color/black__38"
-                        android:textSize="@dimen/fragment_search_toolbar_edit_text_text_size"
-                        android:textStyle="normal"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0"
-                        android:hint="@string/fragment_search_toolbar_edit_text_text" />
-
-                    <ImageView
-                        android:id="@+id/fragment_search_toolbar_search_view_image_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/fragment_search_toolbar_image_view_layout_height"
-                        android:layout_marginStart="@dimen/fragment_search_toolbar_image_view_layout_margin_start"
-                        android:layout_marginTop="@dimen/fragment_search_toolbar_image_view_layout_margin_top"
-                        android:layout_marginEnd="@dimen/fragment_search_toolbar_image_view_layout_margin_end"
-                        android:layout_marginBottom="@dimen/fragment_search_toolbar_image_view_layout_margin_bottom"
-                        android:src="@drawable/mic"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_search_toolbar_search_view_edit_text"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -69,7 +31,7 @@
         android:id="@+id/fragment_search_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_grey_two">
+        android:background="@color/light_grey">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/fragment_search_view_pager_tab_layout"

@@ -3,11 +3,10 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="loading_text">Загрузка…</string>
     <string name="news_text_bottom_navigation">Новости</string>
-    <string name="search_text_bottom_navigation">Поиск</string>
-    <string name="help_text_bottom_navigation">Помощь</string>
+    <string name="search_text">Поиск</string>
+    <string name="help_text">Помочь</string>
     <string name="history_text_bottom_navigation">История</string>
-    <string name="profile_text_bottom_navigation">Профиль</string>
-    <string name="help_fragment_toolbar_title">Помочь</string>
+    <string name="profile_text">Профиль</string>
     <string name="profile_exit_text_button">Выйти из аккаунта</string>
     <string name="activity_profile_full_name_text_view_text">Константинов Денис</string>
     <string name="activity_profile_birthday_text_view_text">Дата рождения</string>
@@ -23,7 +22,11 @@
     <string name="change_photo_dialog_camera_text_view_text">Сделать снимок</string>
     <string name="change_photo_dialog_delete_text_view_text">Удалить</string>
     <string name="fragment_help_category_help_text_view_text">Выберите категорию помощи</string>
-    <string name="profile_fragment_toolbar_title">Профиль</string>
-    <string name="fragment_search_toolbar_edit_text_text">Введите название организации</string>
+    <string name="fragment_search_toolbar_search_view_hint">Введите название организации</string>
+    <string name="search_view_pager_text">Ключевые слова: мастер-класс, помощь \nРезультаты поиска: %1$d мероприятий</string>
+    <string name="change_fragment_exception_text">должен реализовывать интерфейс OnFragmentInteractionListener</string>
+    <string name="change_photo_action_camera">CAMERA</string>
+    <string name="change_photo_action_delete">DELETE</string>
+    <string name="search_menu_item_title">Search</string>
 
 </resources>

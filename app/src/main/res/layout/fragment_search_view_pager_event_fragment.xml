@@ -11,10 +11,7 @@
         android:layout_marginTop="@dimen/fragment_search_view_pager_event_fragment_text_view_layout_margin_top"
         android:layout_marginEnd="@dimen/fragment_search_view_pager_event_fragment_text_view_layout_margin_end"
         android:layout_marginBottom="@dimen/fragment_search_view_pager_event_fragment_text_view_layout_margin_bottom"
-        android:textSize="@dimen/fragment_search_view_pager_event_fragment_text_view_text_size"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal"
-        android:textColor="@color/black__54"
+        android:textAppearance="@style/HelperText.SearchEditText"
         android:lineSpacingExtra="@dimen/fragment_search_view_pager_event_fragment_text_view_line_spacing_extra"/>
 
     <androidx.recyclerview.widget.RecyclerView

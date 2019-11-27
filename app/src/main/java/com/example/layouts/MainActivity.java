@@ -6,16 +6,18 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.layouts.ui.ChangePhotoFragment;
 import com.example.layouts.ui.HelpFragment;
 import com.example.layouts.ui.ProfileFragment;
 import com.example.layouts.ui.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ChangePhotoFragment.OnFragmentActionListener {
 
     private final FragmentManager mFragmentManager = getSupportFragmentManager();
 
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setSelectedItemId(R.id.help_bottom_navigation_item);
@@ -56,4 +57,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        if (fragment instanceof ChangePhotoFragment) {
+            ChangePhotoFragment changePhotoFragment = (ChangePhotoFragment) fragment;
+            changePhotoFragment.setOnFragmentActionListener(this);
+        }
+    }
+
+    @Override
+    public void onFragmentAction(String action) {
+        ProfileFragment fragment = (ProfileFragment)
+                getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_main);
+        if (fragment != null) {
+            fragment.doAction(action);
+        }
+    }
 }
