@@ -30,9 +30,9 @@
         android:id="@+id/fragment_help_category_help_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/fragment_help_category_help_text_view_layout_margin_start"
-        android:layout_marginTop="@dimen/fragment_help_category_help_text_view_layout_margin_top"
-        android:layout_marginEnd="@dimen/fragment_help_category_help_text_view_layout_margin_end"
+        android:layout_marginStart="@dimen/sixty_eight_dp"
+        android:layout_marginTop="@dimen/nineteen_dp"
+        android:layout_marginEnd="@dimen/sixty_eight_dp"
         android:text="@string/fragment_help_category_help_text_view_text"
         android:textAppearance="@style/HelperText.Body1" />
 
@@ -41,8 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="@dimen/fragment_help_category_help_recycler_view_margin_top"
-        android:layout_marginEnd="@dimen/fragment_help_category_help_recycler_view_margin_end">
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:layout_marginEnd="@dimen/four_dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
