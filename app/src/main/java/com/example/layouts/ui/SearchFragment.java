@@ -1,5 +1,7 @@
 package com.example.layouts.ui;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -7,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +23,9 @@ import com.example.layouts.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class SearchFragment extends Fragment {
+
+    private SearchView mSearchView;
+    private SearchView.OnQueryTextListener mQueryTextListener;
 
     public SearchFragment() {
         setHasOptionsMenu(true);
@@ -47,17 +53,44 @@ public class SearchFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
+        mSearchView = (SearchView) searchItem.getActionView();
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
-        searchView.setQueryHint(getString(R.string.fragment_search_toolbar_search_view_hint));
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (mSearchView != null) {
+            mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+            mQueryTextListener = new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return true;
+                }
 
-            }
-        });
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    return true;
+                }
+            };
+            mSearchView.setOnQueryTextListener(mQueryTextListener);
+            mSearchView.setIconifiedByDefault(false);
+            mSearchView.setQueryHint(getResources().getString(R.string.fragment_search_toolbar_search_view_hint));
+            mSearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+
+                    int id = mSearchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+                    TextView textView = mSearchView.findViewById(id);
+
+                    if (b) {
+                        mSearchView.setBackgroundColor(getResources().getColor(R.color.white));
+                        textView.setTextColor(getResources().getColor(R.color.cool_grey));
+
+                    } else {
+                        mSearchView.setBackgroundColor(getResources().getColor(R.color.white));
+                        textView.setTextColor(getResources().getColor(R.color.black_87));
+                    }
+                }
+            });
+        }
 
         super.onCreateOptionsMenu(menu, inflater);
     }
