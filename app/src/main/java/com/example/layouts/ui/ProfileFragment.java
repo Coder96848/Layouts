@@ -33,8 +33,8 @@ public class ProfileFragment extends Fragment {
 
     private static final int REQUEST_TAKE_PHOTO = 1;
 
-    private File photoFile;
-    private ImageView profilePhotoImageView;
+    private ImageView mProfilePhotoImageView;
+    private String mCurrentPhotoPath;
 
     public ProfileFragment() {
         setHasOptionsMenu(true);
@@ -57,8 +57,8 @@ public class ProfileFragment extends Fragment {
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_profile_toolbar);
         toolbar.inflateMenu(R.menu.edit_toolbar_menu);
 
-        profilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
-        profilePhotoImageView.setOnClickListener(new View.OnClickListener() {
+        mProfilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
+        mProfilePhotoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog();
@@ -76,9 +76,28 @@ public class ProfileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
             if(getActivity() != null) {
-                Picasso.with(getContext()).load(photoFile).fit().centerCrop().into(profilePhotoImageView);
+                setImage();
             }
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("PHOTO", mCurrentPhotoPath);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState != null) {
+            mCurrentPhotoPath  = savedInstanceState.getString("PHOTO");
+            setImage();
+        }
+    }
+
+    private void setImage() {
+        Picasso.with(getContext()).load(new File(mCurrentPhotoPath)).fit().centerCrop().into(mProfilePhotoImageView);
     }
 
     public void doAction(String action){
@@ -89,7 +108,7 @@ public class ProfileFragment extends Fragment {
                 break;
 
             case "DELETE":
-                Picasso.with(getContext()).load(R.drawable.user_icon).into(profilePhotoImageView);
+                Picasso.with(getContext()).load(R.drawable.user_icon).into(mProfilePhotoImageView);
                 break;
         }
 
@@ -106,7 +125,7 @@ public class ProfileFragment extends Fragment {
 
         if(getActivity() != null) {
             if (pictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-                photoFile = null;
+                File photoFile = null;
                 try {
                     photoFile = createImageFile();
                 } catch (IOException ex) {
@@ -135,6 +154,7 @@ public class ProfileFragment extends Fragment {
                     storageDir
             );
         }
+        mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
 }

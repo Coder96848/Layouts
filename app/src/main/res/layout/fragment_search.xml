@@ -8,22 +8,8 @@
         android:id="@+id/fragment_search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/leaf">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:gravity="center_horizontal"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/profile_fragment_toolbar_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                style="@style/HelperText.Title3"
-                android:text="@string/search_text"/>
-
-        </LinearLayout>
+        android:background="@color/leaf"
+        app:title="@string/search_text">
 
     </androidx.appcompat.widget.Toolbar>
 

@@ -24,7 +24,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class SearchFragment extends Fragment {
 
-    private SearchView mSearchView;
+    private SearchView mSearchView = null;
     private SearchView.OnQueryTextListener mQueryTextListener;
 
     public SearchFragment() {
@@ -53,9 +53,10 @@ public class SearchFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+
         MenuItem searchItem = menu.findItem(R.id.action_search);
         mSearchView = (SearchView) searchItem.getActionView();
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        final SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
         if (mSearchView != null) {
             mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
@@ -76,8 +77,8 @@ public class SearchFragment extends Fragment {
             mSearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View view, boolean b) {
-
-                    int id = mSearchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+                    int id = mSearchView.getContext().getResources()
+                            .getIdentifier("android:id/search_view_text_view", null, null);
                     TextView textView = mSearchView.findViewById(id);
 
                     if (b) {
@@ -95,9 +96,25 @@ public class SearchFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private static class SearchViewPagerAdapter extends FragmentPagerAdapter {
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+
+                return true;
+
+            default:
+                break;
+        }
+
+        mSearchView.setOnQueryTextListener(mQueryTextListener);
+        return super.onOptionsItemSelected(item);
+    }
+
+    private class SearchViewPagerAdapter extends FragmentPagerAdapter {
 
         int NUM_PAGES = 2;
+
         public SearchViewPagerAdapter(@NonNull FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         }
@@ -127,9 +144,9 @@ public class SearchFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "По мероприятиям";
+                    return getString(R.string.search_page_event_title);
                 case 1:
-                    return "По НКО";
+                    return getString(R.string.search_page_nko_title);
 
                 default:
                     return "";

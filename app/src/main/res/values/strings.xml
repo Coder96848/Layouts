@@ -29,5 +29,7 @@
     <string name="change_photo_action_delete">DELETE</string>
     <string name="search_menu_item_title">Search</string>
     <string name="search_hint">Hint</string>
+    <string name="search_page_event_title">По мероприятиям</string>
+    <string name="search_page_nko_title">По НКО</string>
 
 </resources>

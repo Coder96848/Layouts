@@ -6,7 +6,7 @@
         android:id="@+id/action_search"
         android:title="@string/search_menu_item_title"
         android:icon="@drawable/search_white"
-        app:showAsAction="collapseActionView|ifRoom"
+        app:showAsAction="ifRoom|collapseActionView"
         android:actionLayout="@layout/view_search"/>
 
 </menu>
