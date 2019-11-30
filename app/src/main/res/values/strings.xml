@@ -22,12 +22,11 @@
     <string name="change_photo_dialog_camera_text_view_text">Сделать снимок</string>
     <string name="change_photo_dialog_delete_text_view_text">Удалить</string>
     <string name="fragment_help_category_help_text_view_text">Выберите категорию помощи</string>
-    <string name="fragment_search_toolbar_search_view_hint">Введите название организации</string>
+    <string name="search_view_hint">Введите название организации</string>
     <string name="search_view_pager_text">Ключевые слова: мастер-класс, помощь \nРезультаты поиска: %1$d мероприятий</string>
     <string name="change_fragment_exception_text">должен реализовывать интерфейс OnFragmentInteractionListener</string>
     <string name="change_photo_action_camera">CAMERA</string>
     <string name="change_photo_action_delete">DELETE</string>
-    <string name="search_menu_item_title">Search</string>
     <string name="search_hint">Hint</string>
     <string name="search_page_event_title">По мероприятиям</string>
     <string name="search_page_nko_title">По НКО</string>
