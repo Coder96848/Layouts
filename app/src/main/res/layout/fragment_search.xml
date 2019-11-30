@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/HelperAppTheme">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/fragment_search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/leaf"
-        app:title="@string/search_text">
-
-    </androidx.appcompat.widget.Toolbar>
+        app:menu="@menu/search_toolbar_menu"
+        app:title="@string/search_text"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/fragment_search_view_pager"
