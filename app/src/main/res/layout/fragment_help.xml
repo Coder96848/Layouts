@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/fragment_help_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/leaf">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:gravity="center_horizontal"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/help_fragment_toolbar_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextStyle2"
-                android:text="@string/help_fragment_toolbar_title"/>
-
-        </LinearLayout>
+        android:background="@color/leaf"
+        app:title="@string/help_text">
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -30,19 +18,19 @@
         android:id="@+id/fragment_help_category_help_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/fragment_help_category_help_text_view_layout_margin_start"
-        android:layout_marginTop="@dimen/fragment_help_category_help_text_view_layout_margin_top"
-        android:layout_marginEnd="@dimen/fragment_help_category_help_text_view_layout_margin_end"
+        android:layout_marginStart="@dimen/sixty_eight_dp"
+        android:layout_marginTop="@dimen/nineteen_dp"
+        android:layout_marginEnd="@dimen/sixty_eight_dp"
         android:text="@string/fragment_help_category_help_text_view_text"
-        android:textSize="@dimen/fragment_help_category_help_text_view_text_size"
-        android:textColor="@color/black__87" />
+        android:textAppearance="@style/HelperText.Body1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_help_category_help_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/fragment_help_category_help_recycler_view_margin_top"
-        android:layout_marginEnd="@dimen/fragment_help_category_help_recycler_view_margin_end">
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:layout_marginEnd="@dimen/four_dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 

@@ -34,8 +34,8 @@ public class SearchViewPagerEventFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
 
-        TextView text = view.findViewById(R.id.fragment_search_view_pager_event_fragment_text_view);
-        text.setText("Ключевые слова: мастер-класс, помощь\n" +
-                "Результаты поиска: " + adapter.getItemCount() + " мероприятий");
+        TextView textView = view.findViewById(R.id.fragment_search_view_pager_event_fragment_text_view);
+        String text = getString(R.string.search_view_pager_text, adapter.getItemCount());
+        textView.setText(text);
     }
 }

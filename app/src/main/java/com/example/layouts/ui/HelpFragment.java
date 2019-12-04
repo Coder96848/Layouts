@@ -1,5 +1,6 @@
 package com.example.layouts.ui;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,13 +10,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
-import com.example.layouts.model.CardHelpData;
+import com.example.layouts.model.ItemHelpData;
 import com.example.layouts.util.HelpFragmentRecyclerAdapter;
 
 public class HelpFragment extends Fragment {
@@ -33,22 +33,24 @@ public class HelpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_help_toolbar);
-        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        if (appCompatActivity != null)
-            appCompatActivity.setSupportActionBar(toolbar);
+        toolbar.inflateMenu(R.menu.empty_toolbar_menu);
 
-        CardHelpData cardHelpData = new CardHelpData();
+        ItemHelpData itemHelpData = new ItemHelpData();
         RecyclerView recyclerView = view.findViewById(R.id.fragment_help_category_help_recycler_view);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 2);
-        HelpFragmentRecyclerAdapter adapter = new HelpFragmentRecyclerAdapter(cardHelpData.initializeData());
+        GridLayoutManager gridLayoutManager;
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            gridLayoutManager = new GridLayoutManager(view.getContext(), 2);
+        }
+        else {
+            gridLayoutManager = new GridLayoutManager(view.getContext(), 4);
+        }
+        HelpFragmentRecyclerAdapter adapter = new HelpFragmentRecyclerAdapter(itemHelpData.initializeData());
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.empty_toolbar_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 }

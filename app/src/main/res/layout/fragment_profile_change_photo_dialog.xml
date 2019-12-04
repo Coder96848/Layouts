@@ -1,96 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-
-    <ImageView
-        android:id="@+id/change_photo_dialog_upload_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/change_photo_dialog_upload_image_view_margin_start"
-        android:layout_marginTop="@dimen/change_photo_dialog_upload_image_view_margin_top"
-        android:src="@drawable/upload"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
     <TextView
         android:id="@+id/change_photo_dialog_upload_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/change_photo_dialog_upload_text_view_margin_start"
-        android:layout_marginTop="@dimen/change_photo_dialog_upload_text_view_margin_top"
-        android:layout_marginEnd="@dimen/change_photo_dialog_upload_text_view_margin_end"
+        android:drawableStart="@drawable/upload"
+        android:drawablePadding="24dp"
+        android:paddingStart="@dimen/twenty_four_dp"
+        android:paddingTop="@dimen/thirty_one_dp"
+        android:paddingEnd="60dp"
         android:text="@string/change_photo_dialog_upload_text_view_text"
-        android:textSize="@dimen/change_photo_dialog_upload_text_view_text_size"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal"
-        android:textColor="@color/black__87"
+        android:textAppearance="@style/HelperText.Title4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/change_photo_dialog_upload_image_view"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/change_photo_dialog_camera_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/change_photo_dialog_camera_image_view_margin_start"
-        android:layout_marginTop="@dimen/change_photo_dialog_camera_image_view_margin_top"
-        android:src="@drawable/camera"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/change_photo_dialog_upload_image_view"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/change_photo_dialog_camera_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/change_photo_dialog_camera_text_view_margin_start"
-        android:layout_marginTop="@dimen/change_photo_dialog_camera_text_view_margin_top"
-        android:layout_marginEnd="@dimen/change_photo_dialog_camera_text_view_margin_end"
+        android:drawableStart="@drawable/camera"
+        android:drawablePadding="24dp"
+        android:paddingStart="@dimen/twenty_four_dp"
+        android:paddingTop="@dimen/thirty_seven_dp"
+        android:paddingEnd="39dp"
         android:text="@string/change_photo_dialog_camera_text_view_text"
-        android:textSize="@dimen/change_photo_dialog_camera_text_view_text_size"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal"
-        android:textColor="@color/black__87"
+        android:textAppearance="@style/HelperText.Title4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/change_photo_dialog_camera_image_view"
-        app:layout_constraintTop_toBottomOf="@+id/change_photo_dialog_upload_text_view" />
-
-    <ImageView
-        android:id="@+id/change_photo_dialog_delete_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/change_photo_dialog_delete_image_view_margin_start"
-        android:layout_marginTop="@dimen/change_photo_dialog_delete_image_view_margin_top"
-        android:layout_marginBottom="@dimen/change_photo_dialog_delete_image_view_margin_bottom"
-        android:src="@drawable/delete"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/change_photo_dialog_camera_image_view"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/change_photo_dialog_upload_text_view" />
 
     <TextView
         android:id="@+id/change_photo_dialog_delete_text_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/change_photo_dialog_delete_text_view_margin_start"
-        android:layout_marginTop="@dimen/change_photo_dialog_delete_text_view_margin_top"
-        android:layout_marginEnd="@dimen/change_photo_dialog_delete_text_view_margin_end"
-        android:layout_marginBottom="@dimen/change_photo_dialog_delete_text_view_margin_bottom"
+        android:drawableStart="@drawable/delete"
+        android:drawablePadding="24dp"
+        android:paddingStart="@dimen/twenty_four_dp"
+        android:paddingTop="@dimen/forty_three_dp"
+        android:paddingEnd="121dp"
+        android:paddingBottom="@dimen/twenty_eight_dp"
         android:text="@string/change_photo_dialog_delete_text_view_text"
-        android:textSize="@dimen/change_photo_dialog_delete_text_view_text_size"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal"
-        android:textColor="@color/black__87"
+        android:textAppearance="@style/HelperText.Title4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/change_photo_dialog_camera_image_view"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_photo_dialog_camera_text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

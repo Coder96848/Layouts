@@ -1,15 +1,18 @@
 package com.example.layouts.ui;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -19,6 +22,9 @@ import com.example.layouts.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class SearchFragment extends Fragment {
+
+    private SearchView mSearchView = null;
+    private SearchView.OnQueryTextListener mQueryTextListener;
 
     public SearchFragment() {
         setHasOptionsMenu(true);
@@ -33,13 +39,6 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_search_toolbar);
-
-        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-
-        if (appCompatActivity != null)
-            appCompatActivity.setSupportActionBar(toolbar);
-
         SearchViewPagerAdapter adapter = new SearchViewPagerAdapter(getChildFragmentManager());
         ViewPager viewPager = view.findViewById(R.id.fragment_search_view_pager);
         viewPager.setAdapter(adapter);
@@ -50,14 +49,34 @@ public class SearchFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.empty_toolbar_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) searchItem.getActionView();
+        final SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if (mSearchView != null) {
+            mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+            mQueryTextListener = new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    return true;
+                }
+            };
+            mSearchView.setOnQueryTextListener(mQueryTextListener);
+        }
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private static class SearchViewPagerAdapter extends FragmentPagerAdapter {
+    private class SearchViewPagerAdapter extends FragmentPagerAdapter {
 
         int NUM_PAGES = 2;
+
         public SearchViewPagerAdapter(@NonNull FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         }
@@ -87,9 +106,9 @@ public class SearchFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "По мероприятиям";
+                    return getString(R.string.search_page_event_title);
                 case 1:
-                    return "По НКО";
+                    return getString(R.string.search_page_nko_title);
 
                 default:
                     return "";
