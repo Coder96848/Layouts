@@ -15,16 +15,8 @@ public class ItemHelpData {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public int getImageId() {
         return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
     }
 
     public ItemHelpData() {

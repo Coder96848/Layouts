@@ -60,11 +60,20 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
     }
 
     @Override
-    public void onFragmentAction(String action) {
+    public void onCameraAction() {
         ProfileFragment fragment = (ProfileFragment)
                 getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_main);
         if (fragment != null) {
-            fragment.doAction(action);
+            fragment.doCameraAction();
+        }
+    }
+
+    @Override
+    public void onDeleteAction() {
+        ProfileFragment fragment = (ProfileFragment)
+                getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_main);
+        if (fragment != null) {
+            fragment.doDeleteAction();
         }
     }
 

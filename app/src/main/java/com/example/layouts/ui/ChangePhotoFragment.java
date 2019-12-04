@@ -17,7 +17,6 @@ import com.example.layouts.R;
 public class ChangePhotoFragment extends DialogFragment {
 
     private OnFragmentActionListener callback;
-    private String action;
 
     public void setOnFragmentActionListener(OnFragmentActionListener callback) {
         this.callback = callback;
@@ -33,8 +32,7 @@ public class ChangePhotoFragment extends DialogFragment {
         cameraTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action = getString(R.string.change_photo_action_camera);
-                callback.onFragmentAction(action);
+                callback.onCameraAction();
                 dismiss();
             }
         });
@@ -43,8 +41,7 @@ public class ChangePhotoFragment extends DialogFragment {
         deletePhotoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action = getString(R.string.change_photo_action_delete);
-                callback.onFragmentAction(action);
+                callback.onDeleteAction();
                 dismiss();
             }
         });
@@ -64,8 +61,8 @@ public class ChangePhotoFragment extends DialogFragment {
     }
 
     public interface OnFragmentActionListener {
-
-        void onFragmentAction(String action);
+        void onCameraAction();
+        void onDeleteAction();
     }
 
 }

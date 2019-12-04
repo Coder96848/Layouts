@@ -43,7 +43,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
     }
 
     @Override
@@ -100,18 +99,12 @@ public class ProfileFragment extends Fragment {
         Picasso.with(getContext()).load(new File(mCurrentPhotoPath)).fit().centerCrop().into(mProfilePhotoImageView);
     }
 
-    public void doAction(String action){
+    public void doCameraAction(){
+        takePictureIntent();
+    }
 
-        switch (action) {
-            case "CAMERA":
-                takePictureIntent();
-                break;
-
-            case "DELETE":
-                Picasso.with(getContext()).load(R.drawable.user_icon).into(mProfilePhotoImageView);
-                break;
-        }
-
+    public void doDeleteAction(){
+        Picasso.with(getContext()).load(R.drawable.user_icon).into(mProfilePhotoImageView);
     }
 
     private void showDialog() {
