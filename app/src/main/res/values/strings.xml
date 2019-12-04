@@ -1,13 +1,12 @@
 <resources>
-    <string name="app_name">Layouts</string>
-    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="app_name">HelpApp</string>
+    <string name="title_activity_main">MainActivity</string>
     <string name="loading_text">Загрузка…</string>
     <string name="news_text_bottom_navigation">Новости</string>
-    <string name="search_text_bottom_navigation">Поиск</string>
-    <string name="help_text_bottom_navigation">Помощь</string>
+    <string name="search_text">Поиск</string>
+    <string name="help_text">Помочь</string>
     <string name="history_text_bottom_navigation">История</string>
-    <string name="profile_text_bottom_navigation">Профиль</string>
-    <string name="toolbar_title">Профиль</string>
+    <string name="profile_text">Профиль</string>
     <string name="profile_exit_text_button">Выйти из аккаунта</string>
     <string name="activity_profile_full_name_text_view_text">Константинов Денис</string>
     <string name="activity_profile_birthday_text_view_text">Дата рождения</string>
@@ -19,5 +18,15 @@
     <string name="activity_profile_1_text_view_text">Дмитрий Валерьевич</string>
     <string name="activity_profile_2_text_view_text">Евгений Александров</string>
     <string name="activity_profile_3_text_view_text">Виктор Кузнецов</string>
+    <string name="change_photo_dialog_upload_text_view_text">Выбрать фото</string>
+    <string name="change_photo_dialog_camera_text_view_text">Сделать снимок</string>
+    <string name="change_photo_dialog_delete_text_view_text">Удалить</string>
+    <string name="fragment_help_category_help_text_view_text">Выберите категорию помощи</string>
+    <string name="search_view_hint">Введите название организации</string>
+    <string name="search_view_pager_text">Ключевые слова: мастер-класс, помощь \nРезультаты поиска: %1$d мероприятий</string>
+    <string name="change_fragment_exception_text">должен реализовывать интерфейс OnFragmentInteractionListener</string>
+    <string name="search_hint">Hint</string>
+    <string name="search_page_event_title">По мероприятиям</string>
+    <string name="search_page_nko_title">По НКО</string>
 
 </resources>

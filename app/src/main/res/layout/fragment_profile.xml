@@ -2,47 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProfileActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/profile_toolbar"
+        android:id="@+id/fragment_profile_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/leaf">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:gravity="center_horizontal"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextStyle2"
-                android:text="@string/toolbar_title"/>
-
-        </LinearLayout>
+        android:background="@color/leaf"
+        app:title="@string/profile_text">
 
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/image_man_image_view"
+                android:id="@+id/profile_photo_image_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/two_hundred_twenty_dp"
                 android:src="@drawable/image_man"
                 android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -54,27 +38,21 @@
                 android:id="@+id/full_name_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_full_name_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_full_name_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/twenty_dp"
                 android:text="@string/activity_profile_full_name_text_view_text"
-                android:textSize="@dimen/activity_profile_full_name_text_view_text_size"
-                android:textColor="@color/black__87"
+                android:textAppearance="@style/HelperText.Header1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_man_image_view" />
+                app:layout_constraintTop_toBottomOf="@+id/profile_photo_image_view" />
 
             <TextView
                 android:id="@+id/born_day_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_birthday_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_birthday_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/sixteen_dp"
                 android:text="@string/activity_profile_birthday_text_view_text"
-                android:textSize="@dimen/activity_profile_birthday_text_view_text_size"
-                android:textColor="@color/black__38"
+                android:textAppearance="@style/HelperText.Title1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/full_name_text_view" />
 
@@ -82,12 +60,9 @@
                 android:id="@+id/value_date_born_day_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_value_date_birthday_text_view_margin_start"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
                 android:text="@string/activity_profile_value_date_birthday_text_view_text"
-                android:textSize="@dimen/activity_profile_value_date_birthday_text_view_text_size"
-                android:textColor="@color/black__87"
+                android:textAppearance="@style/HelperText.Body1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/born_day_text_view" />
 
@@ -95,13 +70,10 @@
                 android:id="@+id/field_activity_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_field_activity_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_field_activity_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/ten_dp"
                 android:text="@string/activity_profile_field_activity_text_view_text"
-                android:textSize="@dimen/activity_profile_field_activity_text_view_text_size"
-                android:textColor="@color/black__38"
+                android:textAppearance="@style/HelperText.Title1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/value_date_born_day_text_view" />
 
@@ -109,12 +81,9 @@
                 android:id="@+id/value_field_activity_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_value_field_activity_text_view_margin_start"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
                 android:text="@string/activity_profile_value_field_activity_text_view_text"
-                android:textSize="@dimen/activity_profile_value_field_activity_text_view_text_size"
-                android:textColor="@color/black__87"
+                android:textAppearance="@style/HelperText.Body1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/field_activity_text_view" />
 
@@ -122,13 +91,10 @@
                 android:id="@+id/push_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_push_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_push_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/twenty_eight_dp"
                 android:text="@string/activity_profile_push_text_view_text"
-                android:textColor="@color/black__87"
-                android:textSize="@dimen/activity_profile_push_text_view_text_size"
+                android:textAppearance="@style/HelperText.Body1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/value_field_activity_text_view" />
 
@@ -136,19 +102,18 @@
                 android:id="@+id/push_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_push_switch_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_push_switch_margin_top"
-                android:layout_marginEnd="@dimen/activity_profile_push_switch_margin_end"
-                android:theme="@style/SwitchTheme"
+                android:layout_marginStart="@dimen/two_hundred_ninety_seven_dp"
+                android:layout_marginTop="@dimen/one_hundred_eighty_two_dp"
+                android:layout_marginEnd="@dimen/twenty_six_dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_man_image_view"/>
+                app:layout_constraintTop_toBottomOf="@+id/profile_photo_image_view"/>
 
             <View
                 android:id="@+id/divider_info"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_profile_divider_info_layout_height"
-                android:layout_marginTop="@dimen/activity_profile_divider_info_margin_top"
+                android:layout_height="@dimen/one_dp"
+                android:layout_marginTop="@dimen/eighteen_dp"
                 android:background="@color/cool_grey"
                 app:layout_constraintTop_toBottomOf="@+id/push_text_view" />
 
@@ -156,13 +121,10 @@
                 android:id="@+id/friends_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_friends_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_friends_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/twenty_dp"
                 android:text="@string/activity_profile_friends_text_view_text"
-                android:textSize="@dimen/activity_profile_friends_text_view_text_size"
-                android:textColor="@color/black__38"
+                android:textAppearance="@style/HelperText.Title1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider_info" />
 
@@ -170,8 +132,8 @@
                 android:id="@+id/profile_1_image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_1_image_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_1_image_view_margin_top"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/sixteen_dp"
                 android:src="@drawable/avatar_3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/friends_text_view"
@@ -181,13 +143,10 @@
                 android:id="@+id/title_profile_1_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_1_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_1_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/sixty_seven_dp"
                 android:text="@string/activity_profile_1_text_view_text"
-                android:textColor="@color/black__87"
-                android:textSize="@dimen/activity_profile_1_text_view_text_size"
+                android:textAppearance="@style/HelperText.Body1"
                 app:layout_constraintStart_toEndOf="@+id/profile_1_image_view"
                 app:layout_constraintTop_toBottomOf="@+id/divider_info" />
 
@@ -195,8 +154,8 @@
                 android:id="@+id/profile_2_ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_2_image_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_2_image_view_margin_top"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/ten_dp"
                 android:src="@drawable/avatar_2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_1_image_view"
@@ -206,13 +165,10 @@
                 android:id="@+id/title_profile_2_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_2_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_2_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/thirty_nine_dp"
                 android:text="@string/activity_profile_2_text_view_text"
-                android:textColor="@color/black__87"
-                android:textSize="@dimen/activity_profile_2_text_view_text_size"
+                android:textAppearance="@style/HelperText.Body1"
                 app:layout_constraintStart_toEndOf="@+id/profile_2_ImageView"
                 app:layout_constraintTop_toBottomOf="@+id/title_profile_1_text_view" />
 
@@ -220,8 +176,8 @@
                 android:id="@+id/profile_3_ImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_3_image_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_3_image_view_margin_top"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/ten_dp"
                 android:src="@drawable/avatar_1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_2_ImageView"
@@ -231,42 +187,32 @@
                 android:id="@+id/title_profile_3_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_profile_3_text_view_margin_start"
-                android:layout_marginTop="@dimen/activity_profile_3_text_view_margin_top"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/forty_one_dp"
                 android:text="@string/activity_profile_3_text_view_text"
-                android:textColor="@color/black__87"
-                android:textSize="@dimen/activity_profile_3_text_view_text_size"
+                android:textAppearance="@style/HelperText.Body1"
                 app:layout_constraintStart_toEndOf="@+id/profile_3_ImageView"
                 app:layout_constraintTop_toBottomOf="@+id/title_profile_2_text_view" />
 
             <View
                 android:id="@+id/divider_friends"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_profile_divider_friends_layout_height"
-                android:layout_marginTop="@dimen/activity_profile_divider_friends_margin_top"
+                android:layout_height="@dimen/one_dp"
+                android:layout_marginTop="@dimen/twenty_dp"
                 android:background="@color/cool_grey"
                 app:layout_constraintTop_toBottomOf="@+id/profile_3_ImageView" />
 
             <Button
                 android:id="@+id/exit_acc_button"
-                android:layout_width="@dimen/activity_exit_acc_button_layout_width"
-                android:layout_height="@dimen/activity_exit_acc_button_layout_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/activity_exit_acc_button_margin_start"
-                android:layout_marginTop="@dimen/activity_exit_acc_button_margin_top"
-                android:layout_marginEnd="@dimen/activity_exit_acc_button_margin_end"
-                android:layout_marginBottom="@dimen/activity_exit_acc_button_margin_bottom"
-                android:background="@color/leaf"
-                android:fontFamily="sans-serif-medium"
+                android:layout_marginStart="@dimen/ninety_seven_dp"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:layout_marginEnd="@dimen/ninety_seven_dp"
+                android:layout_marginBottom="@dimen/thirty_eight_dp"
                 android:gravity="center"
-                android:shadowColor="@color/black___12"
                 android:text="@string/profile_exit_text_button"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/activity_exit_acc_button_text_size"
-                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -274,14 +220,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/BottomNavigationTheme"
-        android:background="@color/white"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"/>
 
 </LinearLayout>

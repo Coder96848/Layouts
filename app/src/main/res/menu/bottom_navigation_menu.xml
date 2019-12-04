@@ -10,12 +10,12 @@
         android:id="@+id/search_bottom_navigation_item"
         android:icon="@drawable/search"
         android:state_checked="false"
-        android:title="@string/search_text_bottom_navigation"/>
+        android:title="@string/search_text"/>
     <item
         android:id="@+id/help_bottom_navigation_item"
         android:icon="@drawable/heart"
         android:state_checked="false"
-        android:title="@string/help_text_bottom_navigation"/>
+        android:title="@string/help_text"/>
     <item
         android:id="@+id/history_bottom_navigation_item"
         android:icon="@drawable/history"
@@ -25,8 +25,6 @@
         android:id="@+id/profile_bottom_navigation_item"
         android:icon="@drawable/profile"
         android:state_checked="true"
-        android:title="@string/profile_text_bottom_navigation"/>
-
-
+        android:title="@string/profile_text"/>
 
 </menu>
