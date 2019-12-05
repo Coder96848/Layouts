@@ -28,7 +28,7 @@
         android:id="@+id/fragment_help_category_help_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="@dimen/four_dp"
         android:layout_marginTop="@dimen/twenty_dp"
         android:layout_marginEnd="@dimen/four_dp">
 

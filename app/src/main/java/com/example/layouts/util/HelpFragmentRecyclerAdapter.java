@@ -16,10 +16,10 @@ import java.util.List;
 
 public class HelpFragmentRecyclerAdapter extends RecyclerView.Adapter<HelpFragmentRecyclerAdapter.HelpItemViewHolder> {
 
-    private List<ItemHelpData> cards;
+    private List<ItemHelpData> items;
 
-    public HelpFragmentRecyclerAdapter(List<ItemHelpData> cards){
-        this.cards = cards;
+    public HelpFragmentRecyclerAdapter(List<ItemHelpData> items){
+        this.items = items;
     }
 
     @NonNull
@@ -31,13 +31,13 @@ public class HelpFragmentRecyclerAdapter extends RecyclerView.Adapter<HelpFragme
 
     @Override
     public void onBindViewHolder(@NonNull HelpItemViewHolder holder, int position) {
-        holder.helpTitleTextView.setText(cards.get(position).getTitle());
-        holder.helpImageView.setImageResource(cards.get(position).getImageId());
+        holder.helpTitleTextView.setText(items.get(position).getTitle());
+        holder.helpImageView.setImageResource(items.get(position).getImageId());
     }
 
     @Override
     public int getItemCount() {
-        return cards.size();
+        return items.size();
     }
 
     public class HelpItemViewHolder extends RecyclerView.ViewHolder {
@@ -46,8 +46,8 @@ public class HelpFragmentRecyclerAdapter extends RecyclerView.Adapter<HelpFragme
 
         public HelpItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            helpTitleTextView = itemView.findViewById(R.id.help_item_card_view_text_view);
-            helpImageView = itemView.findViewById(R.id.help_item_card_view_image_view);
+            helpTitleTextView = itemView.findViewById(R.id.help_item_text_view);
+            helpImageView = itemView.findViewById(R.id.help_item_image_view);
         }
     }
 }

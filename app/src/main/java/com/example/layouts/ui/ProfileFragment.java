@@ -22,16 +22,18 @@ import androidx.fragment.app.FragmentManager;
 import com.example.layouts.R;
 import com.squareup.picasso.Picasso;
 
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
+
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
 
     private static final int REQUEST_TAKE_PHOTO = 1;
+    private static final int GALLERY_REQUEST = 2;
 
     private ImageView mProfilePhotoImageView;
     private String mCurrentPhotoPath;
@@ -54,7 +56,7 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_profile_toolbar);
-        toolbar.inflateMenu(R.menu.edit_toolbar_menu);
+        toolbar.inflateMenu(R.menu.profile_toolbar_menu);
 
         mProfilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
         mProfilePhotoImageView.setOnClickListener(new View.OnClickListener() {
@@ -73,9 +75,16 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            if(getActivity() != null) {
-                setImage();
+        if (resultCode == RESULT_OK) {
+            switch(requestCode) {
+                case REQUEST_TAKE_PHOTO:
+                    setImage();
+                case GALLERY_REQUEST:
+                    if(data != null) {
+                        final Uri imageUri = data.getData();
+                        mCurrentPhotoPath = imageUri.getPath();
+                        Picasso.with(getContext()).load(imageUri).fit().centerCrop().into(mProfilePhotoImageView);
+                    }
             }
         }
     }
@@ -100,12 +109,17 @@ public class ProfileFragment extends Fragment {
     }
 
     public void doCameraAction(){
-        takePictureIntent();
+        takeCameraIntent();
     }
 
     public void doDeleteAction(){
         Picasso.with(getContext()).load(R.drawable.user_icon).into(mProfilePhotoImageView);
     }
+
+    public void doChangeAction(){
+        takeGalaryIntent();
+    }
+
 
     private void showDialog() {
             FragmentManager fragmentManager = getChildFragmentManager();
@@ -113,7 +127,7 @@ public class ProfileFragment extends Fragment {
             changePhotoFragment.show(fragmentManager, "dialog");
     }
 
-    private void takePictureIntent() {
+    private void takeCameraIntent() {
         Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         if(getActivity() != null) {
@@ -136,7 +150,8 @@ public class ProfileFragment extends Fragment {
     }
 
     private File createImageFile() throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        String timeStamp = LocalDateTime.now().format(formatter);
         String imageFileName = "JPEG_" + timeStamp + "_";
         File image = null;
         if(getActivity() != null) {
@@ -149,5 +164,11 @@ public class ProfileFragment extends Fragment {
         }
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
+    }
+
+    private void takeGalaryIntent(){
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType("image/*");
+        startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
 }

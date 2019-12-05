@@ -10,9 +10,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.layouts.ui.ChangePhotoFragment;
 import com.example.layouts.ui.HelpFragment;
+import com.example.layouts.ui.NewsFragment;
 import com.example.layouts.ui.ProfileFragment;
 import com.example.layouts.ui.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 
 
 public class MainActivity extends AppCompatActivity implements ChangePhotoFragment.OnFragmentActionListener {
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AndroidThreeTen.init(this);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setSelectedItemId(R.id.help_bottom_navigation_item);
@@ -36,14 +39,17 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
+                    case R.id.news_bottom_navigation_item:
+                        setFragment(new NewsFragment());
+                        return true;
+                    case R.id.search_bottom_navigation_item:
+                        setFragment(new SearchFragment());
+                        return true;
                     case R.id.help_bottom_navigation_item:
                         setFragment(new HelpFragment());
                         return true;
                     case R.id.profile_bottom_navigation_item:
                         setFragment(new ProfileFragment());
-                        return true;
-                    case R.id.search_bottom_navigation_item:
-                        setFragment(new SearchFragment());
                         return true;
                 }
                 return false;
@@ -74,6 +80,15 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
                 getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_main);
         if (fragment != null) {
             fragment.doDeleteAction();
+        }
+    }
+
+    @Override
+    public void onChangeAction() {
+        ProfileFragment fragment = (ProfileFragment)
+                getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_main);
+        if (fragment != null) {
+            fragment.doChangeAction();
         }
     }
 

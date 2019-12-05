@@ -2,7 +2,7 @@
     <string name="app_name">HelpApp</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="loading_text">Загрузка…</string>
-    <string name="news_text_bottom_navigation">Новости</string>
+    <string name="news_text">Новости</string>
     <string name="search_text">Поиск</string>
     <string name="help_text">Помочь</string>
     <string name="history_text_bottom_navigation">История</string>
@@ -28,5 +28,7 @@
     <string name="search_hint">Hint</string>
     <string name="search_page_event_title">По мероприятиям</string>
     <string name="search_page_nko_title">По НКО</string>
+    <string name="fragment_filter_text_view_text">Категории помощи</string>
+    <string name="filter_text">Фильтр</string>
 
 </resources>

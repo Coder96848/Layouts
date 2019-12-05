@@ -25,7 +25,7 @@
     </style>
 
     <style name="HelperMaterialButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:textAppearance">@style/HelperText.Button</item>
+        <item name="android:textAppearance">@style/HelperText.Button1</item>
     </style>
 
     <style name="HelperSearchView" parent="@style/Widget.AppCompat.SearchView">
@@ -66,6 +66,11 @@
         <item name="android:textColor">@color/black_87</item>
     </style>
 
+    <style name="HelperText.Body3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black_70</item>
+    </style>
+
     <style name="HelperText.Header1">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black_87</item>
@@ -93,9 +98,15 @@
         <item name="android:textColor">@color/black_87</item>
     </style>
 
-    <style name="HelperText.Button">
+    <style name="HelperText.Button1">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="HelperText.Button2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -112,6 +123,11 @@
     <style name="HelperText.SearchEditText">
         <item name="android:textColor">@color/black_54</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="HelperText.NewsName">
+        <item name="android:textColor">@color/blue_grey</item>
+        <item name="android:textSize">21sp</item>
     </style>
 
 </resources>

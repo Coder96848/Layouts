@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragment_filter_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/leaf"
+        app:title="@string/filter_text"/>
+
+    <TextView
+        android:id="@+id/fragment_filter_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:layout_marginEnd="@dimen/seventy_two_dp"
+        android:layout_marginBottom="@dimen/twenty_dp"
+        android:textAppearance="@style/HelperText.Body3"
+        android:text="@string/fragment_filter_text_view_text"
+        android:lineSpacingExtra="@dimen/six_dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_filter_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_recycler_view"/>
+
+</LinearLayout>

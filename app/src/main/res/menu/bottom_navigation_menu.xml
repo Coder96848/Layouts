@@ -5,7 +5,7 @@
         android:id="@+id/news_bottom_navigation_item"
         android:icon="@drawable/news"
         android:state_checked="false"
-        android:title="@string/news_text_bottom_navigation"/>
+        android:title="@string/news_text"/>
     <item
         android:id="@+id/search_bottom_navigation_item"
         android:icon="@drawable/search"

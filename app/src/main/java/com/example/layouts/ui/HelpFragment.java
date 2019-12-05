@@ -33,9 +33,9 @@ public class HelpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_help_toolbar);
-        toolbar.inflateMenu(R.menu.empty_toolbar_menu);
+        toolbar.inflateMenu(R.menu.help_toolbar_menu);
 
-        ItemHelpData itemHelpData = new ItemHelpData();
+        ItemHelpData itemHelpData = ItemHelpData.getInstance();
         RecyclerView recyclerView = view.findViewById(R.id.fragment_help_category_help_recycler_view);
         GridLayoutManager gridLayoutManager;
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -44,7 +44,7 @@ public class HelpFragment extends Fragment {
         else {
             gridLayoutManager = new GridLayoutManager(view.getContext(), 4);
         }
-        HelpFragmentRecyclerAdapter adapter = new HelpFragmentRecyclerAdapter(itemHelpData.initializeData());
+        HelpFragmentRecyclerAdapter adapter = new HelpFragmentRecyclerAdapter(itemHelpData.getItems());
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
     }

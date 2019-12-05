@@ -46,6 +46,15 @@ public class ChangePhotoFragment extends DialogFragment {
             }
         });
 
+        TextView changePhotoTextView = view.findViewById(R.id.change_photo_dialog_upload_text_view);
+        changePhotoTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.onChangeAction();
+                dismiss();
+            }
+        });
+
         return view;
     }
 
@@ -63,6 +72,8 @@ public class ChangePhotoFragment extends DialogFragment {
     public interface OnFragmentActionListener {
         void onCameraAction();
         void onDeleteAction();
+        void onChangeAction();
+
     }
 
 }
