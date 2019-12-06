@@ -120,6 +120,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="HelperText.TabLayout2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/black_40</item>
+    </style>
+
     <style name="HelperText.SearchEditText">
         <item name="android:textColor">@color/black_54</item>
         <item name="android:textSize">14sp</item>
@@ -128,6 +134,11 @@
     <style name="HelperText.NewsName">
         <item name="android:textColor">@color/blue_grey</item>
         <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="HelperText.LinkText">
+        <item name="android:textColor">@color/leaf</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>

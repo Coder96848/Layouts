@@ -30,5 +30,7 @@
     <string name="search_page_nko_title">По НКО</string>
     <string name="fragment_filter_text_view_text">Категории помощи</string>
     <string name="filter_text">Фильтр</string>
+    <string name="date_1">Осталось 13 дней (21.09 – 20.10)</string>
+    <string name="link_to_us">Напишите нам</string>
 
 </resources>

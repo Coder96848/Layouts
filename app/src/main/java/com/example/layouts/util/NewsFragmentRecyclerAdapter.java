@@ -12,7 +12,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
-import com.example.layouts.model.ItemHelpData;
 import com.example.layouts.model.ItemNewsData;
 
 import java.util.List;
@@ -20,9 +19,11 @@ import java.util.List;
 public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragmentRecyclerAdapter.NewsItemViewHolder> {
 
     private List<ItemNewsData> news;
+    //private Context context;
 
-    public NewsFragmentRecyclerAdapter(List<ItemNewsData> news) {
+    public NewsFragmentRecyclerAdapter(List<ItemNewsData> news/*, Context context*/) {
         this.news = news;
+        //this.context = context;
     }
 
     @NonNull
@@ -36,6 +37,12 @@ public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragme
     public void onBindViewHolder(@NonNull NewsItemViewHolder holder, int position) {
         holder.textViewName.setText(news.get(position).getNameNews());
         holder.textViewDescription.setText(news.get(position).getDescriptionNews());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

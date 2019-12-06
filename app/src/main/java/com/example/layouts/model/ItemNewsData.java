@@ -1,7 +1,5 @@
 package com.example.layouts.model;
 
-import com.example.layouts.R;
-
 import java.util.ArrayList;
 import java.util.List;
 

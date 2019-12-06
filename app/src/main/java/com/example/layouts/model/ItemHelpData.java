@@ -41,7 +41,7 @@ public final class ItemHelpData {
         return items;
     }
 
-    private static List<ItemHelpData> initializeData(){
+    private static void initializeData(){
         items = new ArrayList<>();
         items.add(new ItemHelpData("Дети", R.drawable.child_image));
         items.add(new ItemHelpData("Взрослые",  R.drawable.adult_image));
@@ -49,7 +49,6 @@ public final class ItemHelpData {
         items.add(new ItemHelpData("Животные",  R.drawable.animal_image));
         items.add(new ItemHelpData("Мероприятия", R.drawable.event_image));
 
-        return items;
     }
 
 

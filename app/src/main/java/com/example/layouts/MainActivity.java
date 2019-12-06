@@ -2,6 +2,7 @@ package com.example.layouts;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.layouts.ui.ChangePhotoFragment;
 import com.example.layouts.ui.HelpFragment;
+import com.example.layouts.ui.NewsDetailsFragment;
 import com.example.layouts.ui.NewsFragment;
 import com.example.layouts.ui.ProfileFragment;
 import com.example.layouts.ui.SearchFragment;
@@ -19,13 +21,15 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class MainActivity extends AppCompatActivity implements ChangePhotoFragment.OnFragmentActionListener {
 
+    private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AndroidThreeTen.init(this);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+        bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setSelectedItemId(R.id.help_bottom_navigation_item);
 
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_main);
@@ -51,17 +55,26 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
                     case R.id.profile_bottom_navigation_item:
                         setFragment(new ProfileFragment());
                         return true;
+                    case R.id.history_bottom_navigation_item:
+                        setFragment(new NewsDetailsFragment());
+                        return true;
                 }
                 return false;
             }
         });
+
     }
 
     @Override
-    public void onAttachFragment(Fragment fragment) {
-        if (fragment instanceof ChangePhotoFragment) {
+    public void onAttachFragment(Fragment fragment){
+        if (fragment instanceof ChangePhotoFragment){
             ChangePhotoFragment changePhotoFragment = (ChangePhotoFragment) fragment;
             changePhotoFragment.setOnFragmentActionListener(this);
+        }
+        if (fragment instanceof NewsDetailsFragment){
+            bottomNavigationView.setVisibility(View.GONE);
+        } else {
+            bottomNavigationView.setVisibility(View.VISIBLE);
         }
     }
 
