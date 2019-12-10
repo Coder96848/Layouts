@@ -34,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:layout_marginTop="@dimen/sixteen_dp"
-                android:text="Спонсоры отремонтируют\nшколу-интернат"
                 android:textAppearance="@style/HelperText.NewsName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -63,12 +62,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_news_name" />
 
             <TextView
-                android:id="@+id/fragment_news_details_scroll_view_text_view_title"
+                android:id="@+id/fragment_news_details_scroll_view_text_view_organization"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:layout_marginTop="8dp"
-                android:text="Благотворительный Фонд «Счастливый Мир»"
                 android:textColor="@color/black_60"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +80,7 @@
                 android:layout_marginTop="@dimen/ten_dp"
                 android:src="@drawable/nav"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_title"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_organization"
                 tools:ignore="ContentDescription"/>
 
             <TextView
@@ -91,10 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fifteen_dp"
                 android:layout_marginStart="@dimen/ten_dp"
-                android:text="Санкт-Петербург, Кирочная улица,\nд. 50А, каб. 208"
                 android:textAppearance="@style/HelperText.Body3"
                 app:layout_constraintStart_toEndOf="@+id/fragment_news_details_scroll_view_image_nav"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_title" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_organization" />
 
             <ImageView
                 android:id="@+id/fragment_news_details_scroll_view_image_phone"
@@ -104,7 +101,8 @@
                 android:layout_marginTop="31dp"
                 android:src="@drawable/phone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_nav" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_nav"
+                tools:ignore="ContentDescription"/>
 
             <TextView
                 android:id="@+id/fragment_news_details_scroll_view_text_view_phone"
@@ -134,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/ten_dp"
                 android:layout_marginTop="@dimen/nineteen_dp"
-                android:text="У вас есть вопросы?"
+                android:text="@string/you_have_a_questions"
                 android:textAppearance="@style/HelperText.Body3"
                 app:layout_constraintStart_toEndOf="@+id/fragment_news_details_scroll_view_image_mail"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_phone" />
@@ -169,7 +167,8 @@
                 android:layout_marginTop="@dimen/twenty_dp"
                 android:src="@drawable/cardimage_2"
                 app:layout_constraintStart_toEndOf="@+id/fragment_news_details_scroll_view_image_detail_1"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_mail" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_mail"
+                tools:ignore="ContentDescription"/>
 
             <ImageView
                 android:id="@+id/fragment_news_details_scroll_view_image_detail_3"
@@ -189,7 +188,6 @@
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:layout_marginTop="@dimen/twenty_dp"
                 android:layout_marginEnd="@dimen/twenty_dp"
-                android:text="Участники и болельщики смогли весело и\nактивно провести время на «Петербургском\nблаготворительном марафоне» и при этом\nфинансово поучаствовать в помощи детям."
                 android:textAppearance="@style/HelperText.Body3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -275,6 +273,7 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/news_details_likes_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/ten_dp"
@@ -307,7 +306,7 @@
             android:paddingTop="9dp"
             android:drawableTop="@drawable/shirt"
             android:textAppearance="@style/HelperText.TabLayout2"
-            android:text="Помочь\nвещами"
+            android:text="@string/help_stuff"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -328,7 +327,7 @@
             android:paddingEnd="@dimen/sixteen_dp"
             android:paddingTop="9dp"
             android:drawableTop="@drawable/hands"
-            android:text="Стать\nволонтером"
+            android:text="@string/help_volunteer"
             android:textAppearance="@style/HelperText.TabLayout2"
             app:layout_constraintStart_toEndOf="@+id/news_details_separator_1"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -350,7 +349,7 @@
             android:paddingEnd="@dimen/twenty_four_dp"
             android:paddingTop="9dp"
             android:drawableTop="@drawable/tools"
-            android:text="Проф.\nпомощь"
+            android:text="@string/help_prof"
             android:textAppearance="@style/HelperText.TabLayout2"
             app:layout_constraintStart_toEndOf="@+id/news_details_separator_2"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -372,7 +371,7 @@
             android:paddingEnd="22dp"
             android:paddingTop="9dp"
             android:drawableTop="@drawable/coins"
-            android:text="Помочь\nденьгами"
+            android:text="@string/help_money"
             android:textAppearance="@style/HelperText.TabLayout2"
             app:layout_constraintStart_toEndOf="@+id/news_details_separator_3"
             app:layout_constraintBottom_toBottomOf="parent" />

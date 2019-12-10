@@ -32,5 +32,10 @@
     <string name="filter_text">Фильтр</string>
     <string name="date_1">Осталось 13 дней (21.09 – 20.10)</string>
     <string name="link_to_us">Напишите нам</string>
+    <string name="you_have_a_questions">У вас есть вопросы?</string>
+    <string name="help_stuff">Помочь вещами</string>
+    <string name="help_volunteer">Стать волонтером</string>
+    <string name="help_prof">Проф. помощь</string>
+    <string name="help_money">Помочь деньгами</string>
 
 </resources>

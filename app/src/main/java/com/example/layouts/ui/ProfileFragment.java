@@ -59,12 +59,7 @@ public class ProfileFragment extends Fragment {
         toolbar.inflateMenu(R.menu.profile_toolbar_menu);
 
         mProfilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
-        mProfilePhotoImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog();
-            }
-        });
+        mProfilePhotoImageView.setOnClickListener(v -> showDialog());
     }
 
     @Override
@@ -117,7 +112,7 @@ public class ProfileFragment extends Fragment {
     }
 
     public void doChangeAction(){
-        takeGalaryIntent();
+        takeGalleryIntent();
     }
 
 
@@ -166,7 +161,7 @@ public class ProfileFragment extends Fragment {
         return image;
     }
 
-    private void takeGalaryIntent(){
+    private void takeGalleryIntent(){
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/filter_menu_item"
+        android:id="@+id/filter_menu_item_ok"
         android:title=""
         android:icon="@drawable/ok"
         app:showAsAction="always"/>

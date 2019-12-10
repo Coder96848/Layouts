@@ -15,15 +15,28 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.layouts.interfaces.ICategory;
 import com.example.layouts.R;
-import com.example.layouts.model.ItemNewsData;
-import com.example.layouts.util.NewsFragmentRecyclerAdapter;
+import com.example.layouts.model.Event;
+import com.example.layouts.model.EventsList;
+import com.example.layouts.util.adapters.NewsFragmentRecyclerAdapter;
+import com.example.layouts.util.json.JSONLoader;
 
-public class NewsFragment extends Fragment {
+import java.util.ArrayList;
+
+public class NewsFragment extends Fragment implements ICategory {
+
+    private ArrayList<String> categories;
+    private ArrayList<String> selectedCategories;
+    private EventsList eventsList;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        JSONLoader jsonLoader = new JSONLoader(getContext());
+        eventsList = new EventsList();
+        eventsList.setEventList(jsonLoader.loadEvents());
+        categories = jsonLoader.loadCategories();
     }
 
     @Override
@@ -34,27 +47,35 @@ public class NewsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        ArrayList<Event> selectedEvents = new ArrayList<>();
+        ArrayList<Event> events = eventsList.getEventList();
+
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_news_toolbar);
         toolbar.inflateMenu(R.menu.news_toolbar_menu);
         if(getActivity() != null) {
             final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.activity_main_fragment_main, new FilterFragment());
-                    fragmentTransaction.commit();
-                    return false;
-                }
+            toolbar.setOnMenuItemClickListener(item -> {
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.activity_main_fragment_main, new FilterFragment(categories, selectedCategories));
+                fragmentTransaction.addToBackStack("FILTER");
+                fragmentTransaction.commit();
+                return false;
             });
         }
 
-        ItemNewsData itemNewsData = new ItemNewsData();
         RecyclerView recyclerView = view.findViewById(R.id.fragment_news_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
 
-        NewsFragmentRecyclerAdapter adapter = new NewsFragmentRecyclerAdapter(itemNewsData.initializeData());
+        if (categories != null && events != null) {
+            selectedCategories = (ArrayList<String>) categories.clone();
+        }
+        NewsFragmentRecyclerAdapter adapter = new NewsFragmentRecyclerAdapter(events, selectedCategories, getFragmentManager(), getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void setSelectedCategories(ArrayList<String> selectedCategories) {
+        this.selectedCategories = selectedCategories;
     }
 }

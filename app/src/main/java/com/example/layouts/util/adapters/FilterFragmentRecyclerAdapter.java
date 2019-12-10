@@ -1,28 +1,27 @@
-package com.example.layouts.util;
+package com.example.layouts.util.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
-import com.example.layouts.model.ItemHelpData;
 
 import java.util.List;
 
 public class FilterFragmentRecyclerAdapter extends RecyclerView.Adapter<FilterFragmentRecyclerAdapter.FilterItemViewHolder> {
 
-    private List<ItemHelpData> items;
+    private List<String> categories;
+    private List<String> selectedCategories;
 
-    public FilterFragmentRecyclerAdapter() {
-    }
-
-    public FilterFragmentRecyclerAdapter(List<ItemHelpData> items) {
-        this.items = items;
+    public FilterFragmentRecyclerAdapter(List<String> categories, List<String> selectedCategories) {
+        this.categories = categories;
+        this.selectedCategories = selectedCategories;
     }
 
     @NonNull
@@ -34,23 +33,29 @@ public class FilterFragmentRecyclerAdapter extends RecyclerView.Adapter<FilterFr
 
     @Override
     public void onBindViewHolder(@NonNull FilterItemViewHolder holder, int position) {
-        holder.textView.setText(items.get(position).getTitle());
+        holder.textView.setText(categories.get(position));
+        SwitchCompat switchCategory = holder.switchCategory;
+        switchCategory.setChecked(selectedCategories.contains(categories.get(position)));
+        switchCategory.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) selectedCategories.add(categories.get(position));
+            else selectedCategories.remove(categories.get(position));
+        });
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return categories.size();
     }
 
     public class FilterItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
-        Switch aSwitch;
+        SwitchCompat switchCategory;
         public FilterItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.fragment_filter_recycler_view_item_text_view);
-            aSwitch = itemView.findViewById(R.id.fragment_filter_recycler_view_item_switch);
+            switchCategory = itemView.findViewById(R.id.fragment_filter_recycler_view_item_switch);
         }
     }
 }

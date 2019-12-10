@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.layouts.interfaces.IMain;
 import com.example.layouts.ui.ChangePhotoFragment;
 import com.example.layouts.ui.HelpFragment;
-import com.example.layouts.ui.NewsDetailsFragment;
 import com.example.layouts.ui.NewsFragment;
 import com.example.layouts.ui.ProfileFragment;
 import com.example.layouts.ui.SearchFragment;
@@ -19,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 
-public class MainActivity extends AppCompatActivity implements ChangePhotoFragment.OnFragmentActionListener {
+public class MainActivity extends AppCompatActivity implements ChangePhotoFragment.OnFragmentActionListener, IMain {
 
     private BottomNavigationView bottomNavigationView;
 
@@ -28,40 +28,37 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AndroidThreeTen.init(this);
+        init();
 
         bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setSelectedItemId(R.id.help_bottom_navigation_item);
 
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.activity_main_fragment_main);
         if (currentFragment == null) {
-            setFragment(new HelpFragment());
+            setFragment(new HelpFragment(), "HELP");
             bottomNavigationView.setSelectedItemId(R.id.help_bottom_navigation_item);
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.news_bottom_navigation_item:
-                        setFragment(new NewsFragment());
-                        return true;
-                    case R.id.search_bottom_navigation_item:
-                        setFragment(new SearchFragment());
-                        return true;
-                    case R.id.help_bottom_navigation_item:
-                        setFragment(new HelpFragment());
-                        return true;
-                    case R.id.profile_bottom_navigation_item:
-                        setFragment(new ProfileFragment());
-                        return true;
-                    case R.id.history_bottom_navigation_item:
-                        setFragment(new NewsDetailsFragment());
-                        return true;
-                }
-                return false;
-            }
-        });
+                menuItem -> {
+                    switch (menuItem.getItemId()) {
+                        case R.id.news_bottom_navigation_item:
+                            setFragment(new NewsFragment(), "NEWS_FRAGMENT");
+                            return true;
+                        case R.id.search_bottom_navigation_item:
+                            setFragment(new SearchFragment(), "SEARCH_FRAGMENT");
+                            return true;
+                        case R.id.help_bottom_navigation_item:
+                            setFragment(new HelpFragment(), "HELP_FRAGMENT");
+                            return true;
+                        case R.id.profile_bottom_navigation_item:
+                            setFragment(new ProfileFragment(),"PROFILE_FRAGMENT");
+                            return true;
+                        case R.id.history_bottom_navigation_item:
+                            return true;
+                    }
+                    return false;
+                });
 
     }
 
@@ -70,11 +67,6 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
         if (fragment instanceof ChangePhotoFragment){
             ChangePhotoFragment changePhotoFragment = (ChangePhotoFragment) fragment;
             changePhotoFragment.setOnFragmentActionListener(this);
-        }
-        if (fragment instanceof NewsDetailsFragment){
-            bottomNavigationView.setVisibility(View.GONE);
-        } else {
-            bottomNavigationView.setVisibility(View.VISIBLE);
         }
     }
 
@@ -105,9 +97,23 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
         }
     }
 
-    private void setFragment(Fragment fragment) {
+    @Override
+    public void setBottomNavigationVisible() {
+        bottomNavigationView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setBottomNavigationGone() {
+        bottomNavigationView.setVisibility(View.GONE);
+    }
+
+    private void setFragment(Fragment fragment, String tag) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.activity_main_fragment_main, fragment);
+        fragmentTransaction.replace(R.id.activity_main_fragment_main, fragment, tag);
+        fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.commit();
+    }
+
+    private void init(){
     }
 }

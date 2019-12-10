@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
 import com.example.layouts.model.SearchResultData;
-import com.example.layouts.util.SearchFragmentRecyclerAdapter;
+import com.example.layouts.util.adapters.SearchFragmentRecyclerAdapter;
 
 public class SearchViewPagerEventFragment extends Fragment {
 

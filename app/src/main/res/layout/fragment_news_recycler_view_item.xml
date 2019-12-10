@@ -27,7 +27,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription"/>
+                tools:ignore="ContentDescription,UnusedAttribute"/>
 
             <TextView
                 android:id="@+id/news_item_card_view_text_view_name"

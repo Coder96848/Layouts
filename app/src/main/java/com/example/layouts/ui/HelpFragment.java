@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
 import com.example.layouts.model.ItemHelpData;
-import com.example.layouts.util.HelpFragmentRecyclerAdapter;
+import com.example.layouts.util.adapters.HelpFragmentRecyclerAdapter;
 
 public class HelpFragment extends Fragment {
 

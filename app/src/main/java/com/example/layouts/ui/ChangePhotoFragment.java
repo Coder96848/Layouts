@@ -29,30 +29,21 @@ public class ChangePhotoFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_profile_change_photo_dialog, container, false);
 
         TextView cameraTextView = view.findViewById(R.id.change_photo_dialog_camera_text_view);
-        cameraTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callback.onCameraAction();
-                dismiss();
-            }
+        cameraTextView.setOnClickListener(v -> {
+            callback.onCameraAction();
+            dismiss();
         });
 
         TextView deletePhotoTextView = view.findViewById(R.id.change_photo_dialog_delete_text_view);
-        deletePhotoTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callback.onDeleteAction();
-                dismiss();
-            }
+        deletePhotoTextView.setOnClickListener(v -> {
+            callback.onDeleteAction();
+            dismiss();
         });
 
         TextView changePhotoTextView = view.findViewById(R.id.change_photo_dialog_upload_text_view);
-        changePhotoTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callback.onChangeAction();
-                dismiss();
-            }
+        changePhotoTextView.setOnClickListener(v -> {
+            callback.onChangeAction();
+            dismiss();
         });
 
         return view;

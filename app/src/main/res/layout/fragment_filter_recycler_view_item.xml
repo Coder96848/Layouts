@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/fragment_filter_recycler_view_item_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

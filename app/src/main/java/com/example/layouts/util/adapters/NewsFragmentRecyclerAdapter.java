@@ -1,5 +1,6 @@
-package com.example.layouts.util;
+package com.example.layouts.util.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,21 +10,30 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
-import com.example.layouts.model.ItemNewsData;
+import com.example.layouts.model.Event;
+import com.example.layouts.ui.NewsDetailsFragment;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragmentRecyclerAdapter.NewsItemViewHolder> {
 
-    private List<ItemNewsData> news;
-    //private Context context;
+    private ArrayList<Event> selectedEvents;
+    private List<String> selectedCategories;
+    private Context context;
+    private FragmentManager fragmentManager;
+    private String date = "";
 
-    public NewsFragmentRecyclerAdapter(List<ItemNewsData> news/*, Context context*/) {
-        this.news = news;
-        //this.context = context;
+    public NewsFragmentRecyclerAdapter(ArrayList<Event> selectedEvents, List<String> selectedCategories, FragmentManager fragmentManager, Context context) {
+        this.selectedEvents = selectedEvents;
+        this.fragmentManager = fragmentManager;
+        this.selectedCategories = selectedCategories;
+        this.context = context;
     }
 
     @NonNull
@@ -35,19 +45,15 @@ public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragme
 
     @Override
     public void onBindViewHolder(@NonNull NewsItemViewHolder holder, int position) {
-        holder.textViewName.setText(news.get(position).getNameNews());
-        holder.textViewDescription.setText(news.get(position).getDescriptionNews());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        Picasso.with(context).load(R.drawable.cardimage_1).into(holder.imageViewMain);
+        holder.textViewName.setText(selectedEvents.get(position).getHeader());
+        holder.textViewDescription.setText(selectedEvents.get(position).getDescription());
+        holder.cardView.setOnClickListener(v -> openNewsDetailFragment(selectedEvents.get(position), date));
     }
 
     @Override
     public int getItemCount() {
-        return news.size();
+        return selectedEvents.size();
     }
 
     public class NewsItemViewHolder extends RecyclerView.ViewHolder {
@@ -68,5 +74,14 @@ public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragme
             button = itemView.findViewById(R.id.news_item_card_view_button);
 
         }
+    }
+
+    private void openNewsDetailFragment(Event event, String date) {
+        NewsDetailsFragment fragment = new NewsDetailsFragment(event, date);
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.activity_main_fragment_main, fragment, "DETAIL_NEWS_FRAGMENT")
+                .addToBackStack(null)
+                .commit();
     }
 }

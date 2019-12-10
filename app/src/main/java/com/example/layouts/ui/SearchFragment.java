@@ -23,9 +23,6 @@ import com.google.android.material.tabs.TabLayout;
 
 public class SearchFragment extends Fragment {
 
-    private SearchView mSearchView = null;
-    private SearchView.OnQueryTextListener mQueryTextListener;
-
     public SearchFragment() {
         setHasOptionsMenu(true);
     }
@@ -51,12 +48,12 @@ public class SearchFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        mSearchView = (SearchView) searchItem.getActionView();
+        SearchView searchView = (SearchView) searchItem.getActionView();
         final SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
-        if (mSearchView != null) {
-            mSearchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-            mQueryTextListener = new SearchView.OnQueryTextListener() {
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+            SearchView.OnQueryTextListener onQueryTextListener = new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String s) {
                     return true;
@@ -67,7 +64,7 @@ public class SearchFragment extends Fragment {
                     return true;
                 }
             };
-            mSearchView.setOnQueryTextListener(mQueryTextListener);
+            searchView.setOnQueryTextListener(onQueryTextListener);
         }
 
         super.onCreateOptionsMenu(menu, inflater);
