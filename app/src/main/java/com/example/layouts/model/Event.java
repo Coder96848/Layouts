@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Event {
 
+    @SerializedName("Id")
+    private int id;
     @SerializedName("Header")
     private String header;
     @SerializedName("BeginEvent")
@@ -30,6 +32,14 @@ public class Event {
     private ArrayList<String> categories;
     @SerializedName("LikesCount")
     private int likesCount;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getHeader() {
         return header;

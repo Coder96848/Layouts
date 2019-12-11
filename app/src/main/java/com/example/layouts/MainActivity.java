@@ -1,10 +1,8 @@
 package com.example.layouts;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -28,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AndroidThreeTen.init(this);
-        init();
 
         bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setSelectedItemId(R.id.help_bottom_navigation_item);
@@ -112,8 +109,5 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
         fragmentTransaction.replace(R.id.activity_main_fragment_main, fragment, tag);
         fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.commit();
-    }
-
-    private void init(){
     }
 }

@@ -1,11 +1,13 @@
 package com.example.layouts.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toolbar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +48,7 @@ public class NewsDetailsFragment extends Fragment {
 
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_news_details_toolbar);
         toolbar.inflateMenu(R.menu.news_details_toolbar_menu);
+        toolbar.setTitle(event.getHeader());
         toolbar.setNavigationIcon(R.drawable.icon_back);
         toolbar.setNavigationOnClickListener(v -> getFragmentManager().popBackStack());
 
@@ -57,14 +60,51 @@ public class NewsDetailsFragment extends Fragment {
         TextView textViewDescription = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_detail_1);
         TextView textView = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_detail_2);
         TextView textViewLikes = view.findViewById(R.id.news_details_likes_count);
+        TextView textViewEmail = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_link);
+        TextView textViewWebsite = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_link_organization);
+
 
         textViewHeader.setText(event.getHeader());
-        //textViewDate.setText(date);
+        textViewDate.setText(date);
         textViewOrganization.setText(event.getOrganization());
         textViewAddress.setText(event.getAddress());
-        //textViewPhone.setText();
+
+        String stringPhone = "";
+        for (String phone : event.getPhones()) {
+            if (event.getPhones().size() > 1){
+                stringPhone = stringPhone + "\n" + phone;
+            }else{
+                stringPhone = phone;
+            }
+        }
+        textViewPhone.setText(stringPhone);
         textViewDescription.setText(event.getDescription());
-        //textViewLikes.setText();
+
+        if(event.getLikesCount() >  5) {
+            textViewLikes.setText("+" + (event.getLikesCount()-5));
+        }else {
+            textViewLikes.setText(String.valueOf(event.getLikesCount()));
+        }
+
+        textViewEmail.setOnClickListener((v) -> {
+            try {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", event.getEmail(), null));
+                startActivity(Intent.createChooser(emailIntent, "Написать письмо"));
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        textViewWebsite.setOnClickListener((v) -> {
+            try {
+                Intent intentSite = new Intent(Intent.ACTION_VIEW);
+                intentSite.setData(Uri.parse(event.getWebsite()));
+                startActivity(intentSite);
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

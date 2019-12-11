@@ -1,6 +1,8 @@
 package com.example.layouts.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -32,11 +34,13 @@ import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
 
+    private static final String APP_PREFERENCES = "appSettings";
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int GALLERY_REQUEST = 2;
 
     private ImageView mProfilePhotoImageView;
-    private String mCurrentPhotoPath;
+    private Uri mCurrentPhotoUri;
+    private SharedPreferences sharedPreferences;
 
     public ProfileFragment() {
         setHasOptionsMenu(true);
@@ -55,10 +59,17 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        sharedPreferences = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_profile_toolbar);
         toolbar.inflateMenu(R.menu.profile_toolbar_menu);
 
+        onLoadPhoto();
         mProfilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
+        if(mCurrentPhotoUri.getPath().equals("")) {
+            doDeleteAction();
+        }else{
+            setImage();
+        }
         mProfilePhotoImageView.setOnClickListener(v -> showDialog());
     }
 
@@ -77,7 +88,8 @@ public class ProfileFragment extends Fragment {
                 case GALLERY_REQUEST:
                     if(data != null) {
                         final Uri imageUri = data.getData();
-                        mCurrentPhotoPath = imageUri.getPath();
+                        mCurrentPhotoUri = imageUri;
+                        onSavePhoto();
                         Picasso.with(getContext()).load(imageUri).fit().centerCrop().into(mProfilePhotoImageView);
                     }
             }
@@ -87,20 +99,20 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("PHOTO", mCurrentPhotoPath);
+        outState.putString("PHOTO", mCurrentPhotoUri.getPath());
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if(savedInstanceState != null) {
-            mCurrentPhotoPath  = savedInstanceState.getString("PHOTO");
+            mCurrentPhotoUri = Uri.parse(savedInstanceState.getString("PHOTO"));
             setImage();
         }
     }
 
     private void setImage() {
-        Picasso.with(getContext()).load(new File(mCurrentPhotoPath)).fit().centerCrop().into(mProfilePhotoImageView);
+        Picasso.with(getContext()).load(new File(mCurrentPhotoUri.getPath())).fit().centerCrop().into(mProfilePhotoImageView);
     }
 
     public void doCameraAction(){
@@ -109,6 +121,7 @@ public class ProfileFragment extends Fragment {
 
     public void doDeleteAction(){
         Picasso.with(getContext()).load(R.drawable.user_icon).into(mProfilePhotoImageView);
+        mCurrentPhotoUri = Uri.parse("");
     }
 
     public void doChangeAction(){
@@ -157,7 +170,8 @@ public class ProfileFragment extends Fragment {
                     storageDir
             );
         }
-        mCurrentPhotoPath = image.getAbsolutePath();
+        mCurrentPhotoUri = Uri.parse(image.getAbsolutePath());
+        onSavePhoto();
         return image;
     }
 
@@ -165,5 +179,16 @@ public class ProfileFragment extends Fragment {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+    }
+
+
+    private void onSavePhoto(){
+        SharedPreferences.Editor e = sharedPreferences.edit();
+        e.putString("currentPhotoUriKey", mCurrentPhotoUri.toString());
+        e.apply();
+    }
+
+    private void onLoadPhoto() {
+        mCurrentPhotoUri = Uri.parse(sharedPreferences.getString("currentPhotoUriKey", ""));
     }
 }

@@ -2,13 +2,13 @@ package com.example.layouts.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +27,6 @@ public class FilterFragment extends Fragment {
         this.selectedCategories = selectedCategories;
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,27 +40,30 @@ public class FilterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        FragmentManager fragmentManager = getFragmentManager();
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_filter_toolbar);
         toolbar.inflateMenu(R.menu.filter_toolbar_menu);
         toolbar.setNavigationIcon(R.drawable.icon_back);
-        toolbar.setNavigationOnClickListener(v -> getFragmentManager().popBackStack());
+        if(fragmentManager != null) {
+            toolbar.setNavigationOnClickListener(v -> fragmentManager.popBackStack());
 
-        toolbar.setOnMenuItemClickListener(item -> {
+            toolbar.setOnMenuItemClickListener(item -> {
 
-            if(item.getItemId() == R.id.filter_menu_item_ok){
-                NewsFragment newsFragment = (NewsFragment) getFragmentManager().findFragmentByTag("NEWS_FRAGMENT");
-                newsFragment.setSelectedCategories(selectedCategories);
-                getFragmentManager().popBackStack();
-            }
+                if (item.getItemId() == R.id.filter_menu_item_ok) {
+                    NewsFragment newsFragment = (NewsFragment) fragmentManager.findFragmentByTag("NEWS_FRAGMENT");
+                    if (newsFragment != null) {
+                        newsFragment.setSelectedCategories(selectedCategories);
+                    }
+                    fragmentManager.popBackStack();
+                }
 
-            return false;
-        });
-
+                return false;
+            });
+        }
         RecyclerView recyclerView = view.findViewById(R.id.fragment_filter_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
 
-        FilterFragmentRecyclerAdapter adapter = new FilterFragmentRecyclerAdapter(categories, selectedCategories);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new FilterFragmentRecyclerAdapter(categories, selectedCategories));
     }
 }

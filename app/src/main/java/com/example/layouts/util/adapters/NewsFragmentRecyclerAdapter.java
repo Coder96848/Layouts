@@ -19,21 +19,27 @@ import com.example.layouts.ui.NewsDetailsFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragmentRecyclerAdapter.NewsItemViewHolder> {
 
     private ArrayList<Event> selectedEvents;
-    private List<String> selectedCategories;
     private Context context;
     private FragmentManager fragmentManager;
-    private String date = "";
+    private ArrayList<String> date;
 
-    public NewsFragmentRecyclerAdapter(ArrayList<Event> selectedEvents, List<String> selectedCategories, FragmentManager fragmentManager, Context context) {
+    public NewsFragmentRecyclerAdapter(ArrayList<Event> selectedEvents, FragmentManager fragmentManager, Context context, ArrayList<String> date) {
         this.selectedEvents = selectedEvents;
         this.fragmentManager = fragmentManager;
-        this.selectedCategories = selectedCategories;
         this.context = context;
+        this.date = date;
+    }
+
+    public ArrayList<Event> getSelectedEvents() {
+        return selectedEvents;
+    }
+
+    public void setSelectedEvents(ArrayList<Event> selectedEvents) {
+        this.selectedEvents = selectedEvents;
     }
 
     @NonNull
@@ -45,10 +51,11 @@ public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragme
 
     @Override
     public void onBindViewHolder(@NonNull NewsItemViewHolder holder, int position) {
-        Picasso.with(context).load(R.drawable.cardimage_1).into(holder.imageViewMain);
+        Picasso.with(context).load(R.drawable.img).into(holder.imageViewMain);
         holder.textViewName.setText(selectedEvents.get(position).getHeader());
         holder.textViewDescription.setText(selectedEvents.get(position).getDescription());
-        holder.cardView.setOnClickListener(v -> openNewsDetailFragment(selectedEvents.get(position), date));
+        holder.button.setText(date.get(position));
+        holder.cardView.setOnClickListener(v -> openNewsDetailFragment(selectedEvents.get(position), date.get(position)));
     }
 
     @Override

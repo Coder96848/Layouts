@@ -30,12 +30,39 @@
     <string name="search_page_nko_title">По НКО</string>
     <string name="fragment_filter_text_view_text">Категории помощи</string>
     <string name="filter_text">Фильтр</string>
-    <string name="date_1">Осталось 13 дней (21.09 – 20.10)</string>
     <string name="link_to_us">Напишите нам</string>
     <string name="you_have_a_questions">У вас есть вопросы?</string>
     <string name="help_stuff">Помочь вещами</string>
     <string name="help_volunteer">Стать волонтером</string>
     <string name="help_prof">Проф. помощь</string>
     <string name="help_money">Помочь деньгами</string>
+    <string name="likes_count">+%1$d</string>
+    <string name="left_bracket">(</string>
+    <string name="right_bracket">)</string>
+    <string name="dash"> - </string>
+    <string name="remained">Осталось </string>
+    <string name="event_be_over">Мероприятие завершено: </string>
+    <string name="go_to_website">Перейти на сайт организации</string>
+
+    <string-array name="months">
+        <item>Январь </item>
+        <item>Февраль </item>
+        <item>Март </item>
+        <item>Апрель </item>
+        <item>Май </item>
+        <item>Июнь </item>
+        <item>Июль </item>
+        <item>Август </item>
+        <item>Сентябрь </item>
+        <item>Октябрь </item>
+        <item>Ноябрь </item>
+        <item>Декабрь </item>
+    </string-array>
+
+    <string-array name="formatDay">
+        <item> день </item>
+        <item> дня </item>
+        <item> дней </item>
+    </string-array>
 
 </resources>
