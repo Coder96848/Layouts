@@ -32,10 +32,10 @@
     <string name="filter_text">Фильтр</string>
     <string name="link_to_us">Напишите нам</string>
     <string name="you_have_a_questions">У вас есть вопросы?</string>
-    <string name="help_stuff">Помочь вещами</string>
-    <string name="help_volunteer">Стать волонтером</string>
-    <string name="help_prof">Проф. помощь</string>
-    <string name="help_money">Помочь деньгами</string>
+    <string name="help_stuff">Помочь\nвещами</string>
+    <string name="help_volunteer">Стать\nволонтером</string>
+    <string name="help_prof">Проф.\nпомощь</string>
+    <string name="help_money">Помочь\nденьгами</string>
     <string name="likes_count">+%1$d</string>
     <string name="left_bracket">(</string>
     <string name="right_bracket">)</string>

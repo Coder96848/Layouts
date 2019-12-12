@@ -75,52 +75,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/thirty_eight_dp"
                 android:src="@drawable/nav"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_organization"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_calendar"
                 tools:ignore="ContentDescription"/>
 
             <TextView
                 android:id="@+id/fragment_news_details_scroll_view_text_view_nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/fifteen_dp"
+                android:layout_marginTop="@dimen/forty_three_dp"
                 android:layout_marginStart="@dimen/ten_dp"
                 android:textAppearance="@style/HelperText.Body3"
                 app:layout_constraintStart_toEndOf="@+id/fragment_news_details_scroll_view_image_nav"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_organization" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_calendar" />
 
             <ImageView
                 android:id="@+id/fragment_news_details_scroll_view_image_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/thirty_one_dp"
+                android:layout_marginTop="@dimen/ninety_three_dp"
                 android:src="@drawable/phone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_nav"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_calendar"
                 tools:ignore="ContentDescription"/>
 
             <TextView
                 android:id="@+id/fragment_news_details_scroll_view_text_view_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/fifteen_dp"
+                android:layout_marginTop="@dimen/seventy_eight_dp"
                 android:layout_marginStart="@dimen/ten_dp"
                 android:textAppearance="@style/HelperText.Body3"
                 app:layout_constraintStart_toEndOf="@+id/fragment_news_details_scroll_view_image_phone"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_nav" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_calendar" />
 
             <ImageView
                 android:id="@+id/fragment_news_details_scroll_view_image_mail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/thirty_one_dp"
+                android:layout_marginTop="@dimen/one_hundred_forty_eight_dp"
                 android:src="@drawable/mail"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_phone"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_calendar"
                 tools:ignore="ContentDescription"/>
 
             <TextView
@@ -128,22 +128,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/ten_dp"
-                android:layout_marginTop="@dimen/nineteen_dp"
+                android:layout_marginTop="@dimen/one_hundred_fifty_three_dp"
                 android:text="@string/you_have_a_questions"
                 android:textAppearance="@style/HelperText.Body3"
                 app:layout_constraintStart_toEndOf="@+id/fragment_news_details_scroll_view_image_mail"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_phone" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_calendar" />
 
             <TextView
                 android:id="@+id/fragment_news_details_scroll_view_text_view_link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/six_dp"
-                android:layout_marginTop="@dimen/nineteen_dp"
+                android:layout_marginTop="@dimen/one_hundred_fifty_three_dp"
                 android:text="@string/link_to_us"
                 android:textAppearance="@style/HelperText.LinkText"
+                android:linksClickable="true"
                 app:layout_constraintStart_toEndOf="@+id/fragment_news_details_scroll_view_text_view_mail"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_phone" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_calendar" />
 
             <ImageView
                 android:id="@+id/fragment_news_details_scroll_view_image_detail_1"
@@ -186,6 +187,7 @@
                 android:layout_marginTop="@dimen/twenty_dp"
                 android:layout_marginEnd="@dimen/twenty_dp"
                 android:textAppearance="@style/HelperText.Body3"
+                android:gravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_image_detail_1" />
@@ -197,6 +199,7 @@
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:textAppearance="@style/HelperText.Body3"
+                android:gravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_detail_1" />
@@ -210,6 +213,7 @@
                 android:paddingBottom="@dimen/thirty_dp"
                 android:text="@string/go_to_website"
                 android:textAppearance="@style/HelperText.LinkText"
+                android:linksClickable="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_news_details_scroll_view_text_view_detail_2" />
 
@@ -286,7 +290,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_news_details_tab_bar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/seventy_dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -296,10 +300,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingStart="@dimen/twenty_six_dp"
-            android:paddingBottom="5dp"
+            android:paddingBottom="@dimen/five_dp"
             android:paddingEnd="@dimen/twenty_six_dp"
-            android:paddingTop="9dp"
+            android:paddingTop="@dimen/two_dp"
             android:drawableTop="@drawable/shirt"
+            android:drawablePadding="@dimen/seven_dp"
             android:textAppearance="@style/HelperText.TabLayout2"
             android:text="@string/help_stuff"
             app:layout_constraintStart_toStartOf="parent"
@@ -318,10 +323,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingStart="@dimen/sixteen_dp"
-            android:paddingBottom="5dp"
+            android:paddingBottom="@dimen/five_dp"
             android:paddingEnd="@dimen/sixteen_dp"
-            android:paddingTop="9dp"
+            android:paddingTop="@dimen/two_dp"
             android:drawableTop="@drawable/hands"
+            android:drawablePadding="@dimen/seven_dp"
             android:text="@string/help_volunteer"
             android:textAppearance="@style/HelperText.TabLayout2"
             app:layout_constraintStart_toEndOf="@+id/news_details_separator_1"
@@ -340,10 +346,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingStart="@dimen/twenty_four_dp"
-            android:paddingBottom="5dp"
+            android:paddingBottom="@dimen/five_dp"
             android:paddingEnd="@dimen/twenty_four_dp"
-            android:paddingTop="9dp"
+            android:paddingTop="@dimen/two_dp"
             android:drawableTop="@drawable/tools"
+            android:drawablePadding="@dimen/seven_dp"
             android:text="@string/help_prof"
             android:textAppearance="@style/HelperText.TabLayout2"
             app:layout_constraintStart_toEndOf="@+id/news_details_separator_2"
@@ -361,11 +368,12 @@
             android:id="@+id/news_details_button_help_money"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingStart="22dp"
-            android:paddingBottom="5dp"
-            android:paddingEnd="22dp"
-            android:paddingTop="9dp"
+            android:paddingStart="@dimen/twenty_two_dp"
+            android:paddingBottom="@dimen/five_dp"
+            android:paddingEnd="@dimen/twenty_two_dp"
+            android:paddingTop="@dimen/two_dp"
             android:drawableTop="@drawable/coins"
+            android:drawablePadding="@dimen/seven_dp"
             android:text="@string/help_money"
             android:textAppearance="@style/HelperText.TabLayout2"
             app:layout_constraintStart_toEndOf="@+id/news_details_separator_3"
