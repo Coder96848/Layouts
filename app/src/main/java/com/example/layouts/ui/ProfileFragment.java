@@ -1,8 +1,10 @@
 package com.example.layouts.ui;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,14 +38,18 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
 
     private static final String APP_PREFERENCES = "appSettings";
+
+    private static final int REQUEST_EXTERNAL_STORAGE_PERMISSION = 0;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int GALLERY_REQUEST = 2;
 
     private ImageView mProfilePhotoImageView;
     private Uri mCurrentPhotoUri;
     private SharedPreferences sharedPreferences;
+    private Context context;
 
-    public ProfileFragment() {
+    public ProfileFragment(Context context) {
+        this.context = context;
         setHasOptionsMenu(true);
     }
 
@@ -63,14 +70,21 @@ public class ProfileFragment extends Fragment {
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_profile_toolbar);
         toolbar.inflateMenu(R.menu.profile_toolbar_menu);
 
-        onLoadPhoto();
+        onLoadPhotoUri();
         mProfilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
-        if(mCurrentPhotoUri.getPath().equals("")) {
+        if (mCurrentPhotoUri.getPath().equals("")) {
             doDeleteAction();
-        }else{
+        } else {
             setImage();
         }
-        mProfilePhotoImageView.setOnClickListener(v -> showDialog());
+        mProfilePhotoImageView.setOnClickListener(v -> {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE_PERMISSION);
+        }else {
+            showDialog();
+        }
+        });
     }
 
     @Override
@@ -111,12 +125,38 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (grantResults.length > 0) {
+            for (int result: grantResults) {
+                if (result != PackageManager.PERMISSION_GRANTED) return;
+            }
+            switch (requestCode) {
+                case REQUEST_EXTERNAL_STORAGE_PERMISSION:
+                    showDialog();
+                    break;
+                case REQUEST_TAKE_PHOTO:
+                    takeCameraIntent();
+                    break;
+                case GALLERY_REQUEST:
+                    takeGalleryIntent();
+                    break;
+            }
+        }
+    }
+
     private void setImage() {
         Picasso.with(getContext()).load(new File(mCurrentPhotoUri.getPath())).fit().centerCrop().into(mProfilePhotoImageView);
     }
 
     public void doCameraAction(){
-        takeCameraIntent();
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA},
+                    REQUEST_TAKE_PHOTO);
+        } else {
+            takeCameraIntent();
+        }
     }
 
     public void doDeleteAction(){
@@ -125,9 +165,12 @@ public class ProfileFragment extends Fragment {
     }
 
     public void doChangeAction(){
-        takeGalleryIntent();
+        if (ContextCompat.checkSelfPermission(context,  Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, GALLERY_REQUEST);
+        }else {
+            takeGalleryIntent();
+        }
     }
-
 
     private void showDialog() {
             FragmentManager fragmentManager = getChildFragmentManager();
@@ -188,7 +231,7 @@ public class ProfileFragment extends Fragment {
         e.apply();
     }
 
-    private void onLoadPhoto() {
+    private void onLoadPhotoUri() {
         mCurrentPhotoUri = Uri.parse(sharedPreferences.getString("currentPhotoUriKey", ""));
     }
 }

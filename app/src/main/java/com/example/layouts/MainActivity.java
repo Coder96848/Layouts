@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements ChangePhotoFragme
                             setFragment(new HelpFragment(), "HELP_FRAGMENT");
                             return true;
                         case R.id.profile_bottom_navigation_item:
-                            setFragment(new ProfileFragment(),"PROFILE_FRAGMENT");
+                            setFragment(new ProfileFragment(this),"PROFILE_FRAGMENT");
                             return true;
                         case R.id.history_bottom_navigation_item:
                             return true;
