@@ -51,6 +51,12 @@ public class ProfileFragment extends Fragment {
     public ProfileFragment(Context context) {
         this.context = context;
         setHasOptionsMenu(true);
+        setRetainInstance(true);
+    }
+
+    public ProfileFragment() {
+        setHasOptionsMenu(true);
+        setRetainInstance(true);
     }
 
     @Override
@@ -70,13 +76,13 @@ public class ProfileFragment extends Fragment {
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_profile_toolbar);
         toolbar.inflateMenu(R.menu.profile_toolbar_menu);
 
-        onLoadPhotoUri();
         mProfilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
-        if (mCurrentPhotoUri.getPath().equals("")) {
-            doDeleteAction();
+        if (onLoadPhotoUri() == null) {
+            setImagePlaceholder();
         } else {
-            setImage();
+            setImage(onLoadPhotoUri());
         }
+
         mProfilePhotoImageView.setOnClickListener(v -> {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -98,31 +104,24 @@ public class ProfileFragment extends Fragment {
         if (resultCode == RESULT_OK) {
             switch(requestCode) {
                 case REQUEST_TAKE_PHOTO:
-                    setImage();
+                    setImage(mCurrentPhotoUri);
                 case GALLERY_REQUEST:
                     if(data != null) {
                         final Uri imageUri = data.getData();
-                        mCurrentPhotoUri = imageUri;
-                        onSavePhoto();
-                        Picasso.with(getContext()).load(imageUri).fit().centerCrop().into(mProfilePhotoImageView);
+                        setImage(imageUri);
+                        onSavePhoto(imageUri);
+
                     }
             }
         }
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("PHOTO", mCurrentPhotoUri.getPath());
-    }
-
-    @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        if(savedInstanceState != null) {
-            mCurrentPhotoUri = Uri.parse(savedInstanceState.getString("PHOTO"));
-            setImage();
-        }
+        if(onLoadPhotoUri() != null) {
+            setImage(onLoadPhotoUri());
+        }else setImagePlaceholder();
     }
 
     @Override
@@ -145,8 +144,22 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void setImage() {
-        Picasso.with(getContext()).load(new File(mCurrentPhotoUri.getPath())).fit().centerCrop().into(mProfilePhotoImageView);
+    private void setImagePhoto(Uri uri) {
+        Picasso.with(getContext()).load(new File(uri.getPath())).fit().centerCrop().into(mProfilePhotoImageView);
+    }
+    private void setImageGallery(Uri uri) {
+        Picasso.with(getContext()).load(uri).fit().centerCrop().into(mProfilePhotoImageView);
+    }
+    private void setImagePlaceholder() {
+        Picasso.with(getContext()).load(R.drawable.user_icon).into(mProfilePhotoImageView);
+    }
+
+    private void setImage(Uri uri){
+        if (uri.getScheme() == null){
+            setImagePhoto(uri);
+        }else {
+            setImageGallery(uri);
+        }
     }
 
     public void doCameraAction(){
@@ -160,8 +173,7 @@ public class ProfileFragment extends Fragment {
     }
 
     public void doDeleteAction(){
-        Picasso.with(getContext()).load(R.drawable.user_icon).into(mProfilePhotoImageView);
-        mCurrentPhotoUri = Uri.parse("");
+        setImagePlaceholder();
     }
 
     public void doChangeAction(){
@@ -214,7 +226,7 @@ public class ProfileFragment extends Fragment {
             );
         }
         mCurrentPhotoUri = Uri.parse(image.getAbsolutePath());
-        onSavePhoto();
+        onSavePhoto(Uri.parse(image.getAbsolutePath()));
         return image;
     }
 
@@ -225,13 +237,15 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    private void onSavePhoto(){
+    private void onSavePhoto(Uri uri){
         SharedPreferences.Editor e = sharedPreferences.edit();
-        e.putString("currentPhotoUriKey", mCurrentPhotoUri.toString());
+        e.putString("currentPhotoUriKey", uri.toString());
         e.apply();
     }
 
-    private void onLoadPhotoUri() {
-        mCurrentPhotoUri = Uri.parse(sharedPreferences.getString("currentPhotoUriKey", ""));
+    private Uri onLoadPhotoUri() {
+        if (sharedPreferences.contains("currentPhotoUriKey")){
+            return Uri.parse(sharedPreferences.getString("currentPhotoUriKey", null));
+        } else return null;
     }
 }

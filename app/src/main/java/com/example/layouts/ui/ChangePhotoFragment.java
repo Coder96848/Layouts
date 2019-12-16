@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.layouts.R;
+import com.example.layouts.interfaces.OnFragmentActionListener;
 
 
 public class ChangePhotoFragment extends DialogFragment {
@@ -59,12 +60,4 @@ public class ChangePhotoFragment extends DialogFragment {
                     + getString(R.string.change_fragment_exception_text));
         }
     }
-
-    public interface OnFragmentActionListener {
-        void onCameraAction();
-        void onDeleteAction();
-        void onChangeAction();
-
-    }
-
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.layouts.interfaces.IMain;
+import com.example.layouts.interfaces.OnFragmentActionListener;
 import com.example.layouts.ui.ChangePhotoFragment;
 import com.example.layouts.ui.HelpFragment;
 import com.example.layouts.ui.NewsFragment;
@@ -17,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 
-public class MainActivity extends AppCompatActivity implements ChangePhotoFragment.OnFragmentActionListener, IMain {
+public class MainActivity extends AppCompatActivity implements OnFragmentActionListener, IMain {
 
     private BottomNavigationView bottomNavigationView;
 
