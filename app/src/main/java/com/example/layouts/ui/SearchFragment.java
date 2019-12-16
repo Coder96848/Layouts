@@ -85,12 +85,9 @@ public class SearchFragment extends Fragment {
                 case 0:
                     return new SearchViewPagerEventFragment();
                 case 1:
-                    return new SearchViewPagerNkoFragment();
-
                 default:
                     return new SearchViewPagerNkoFragment();
             }
-
         }
 
         @Override

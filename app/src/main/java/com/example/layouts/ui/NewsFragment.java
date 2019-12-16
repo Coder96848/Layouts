@@ -1,6 +1,5 @@
 package com.example.layouts.ui;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.layouts.App;
 import com.example.layouts.interfaces.ICategory;
 import com.example.layouts.R;
 import com.example.layouts.model.Event;
@@ -34,23 +34,21 @@ import java.util.Set;
 
 public class NewsFragment extends Fragment implements ICategory {
 
-    private static final String APP_PREFERENCES = "appSettings";
 
-    private ArrayList<String> categories;
+
     private ArrayList<String> selectedCategories;
     private EventsList eventsList;
     private RecyclerView recyclerView;
     private SharedPreferences sharedPreferences;
     private NewsFragmentRecyclerAdapter adapter;
+    private JSONLoader jsonLoader;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        JSONLoader jsonLoader = new JSONLoader(getContext());
-        eventsList = new EventsList();
-        eventsList.setEventList(jsonLoader.loadEvents());
-        categories = jsonLoader.loadCategories();
-        sharedPreferences = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        jsonLoader = App.getJsonLoader();
+        eventsList = new EventsList(jsonLoader.loadEvents());
+        sharedPreferences = App.getSharedPreferences();
     }
 
     @Override
@@ -67,7 +65,7 @@ public class NewsFragment extends Fragment implements ICategory {
             final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             toolbar.setOnMenuItemClickListener(item -> {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.activity_main_fragment_main, new FilterFragment(categories, selectedCategories));
+                fragmentTransaction.replace(R.id.activity_main_fragment_main, new FilterFragment(jsonLoader.loadCategories(), selectedCategories));
                 fragmentTransaction.addToBackStack("FILTER");
                 fragmentTransaction.commit();
                 return false;
@@ -78,11 +76,11 @@ public class NewsFragment extends Fragment implements ICategory {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = (NewsFragmentRecyclerAdapter) recyclerView.getAdapter();
-        if (categories != null && eventsList.getEventList() != null) {
+        if (jsonLoader.loadCategories() != null && eventsList.getEventList() != null) {
             if(selectedCategories == null) {
                 selectedCategories = onLoadCategories();
                 if(selectedCategories.size() == 0) {
-                    selectedCategories = (ArrayList<String>) categories.clone();
+                    selectedCategories = new ArrayList<>(jsonLoader.loadCategories());
                 }
             }
             setSelectedCategories(selectedCategories);
@@ -120,17 +118,14 @@ public class NewsFragment extends Fragment implements ICategory {
     }
 
     private ArrayList<String> onLoadCategories() {
-        ArrayList<String> selectedCategories = new ArrayList<>();
         Set<String> categoriesSet = sharedPreferences.getStringSet("selectedCategoriesSetKey", new HashSet<>());
-        selectedCategories.addAll(categoriesSet);
-        return selectedCategories;
+        return new ArrayList<>(categoriesSet);
     }
 
     private ArrayList<String> getDate(){
 
         ArrayList<Event> events = eventsList.getEventList();
         String[] months = getResources().getStringArray(R.array.months);
-        String[] formatDay = getResources().getStringArray(R.array.formatDay);
 
         ArrayList<String> resultStringList = new ArrayList<>();
         DateTimeFormatter formatterFullDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -140,22 +135,14 @@ public class NewsFragment extends Fragment implements ICategory {
 
         for (Event event : events){
             String strDate;
-            String dayWord;
             LocalDate eventBegin = LocalDate.parse(event.getBeginEvent(), formatterFullDate);
             LocalDate eventEnd= LocalDate.parse(event.getEndEvent(), formatterFullDate);
-
-            switch (Period.between(currentDate, eventEnd).getDays()){
-                case(1): dayWord = formatDay[0]; break;
-                case(2):
-                case(3):
-                case(4): dayWord = formatDay[1]; break;
-                default: dayWord = formatDay[2];
-            }
+            int days = Period.between(currentDate, eventEnd).getDays();
 
             if (currentDate.equals(eventBegin) || currentDate.isAfter(eventBegin) && currentDate.isBefore(eventEnd)){
                 strDate = getString(R.string.remained) + " "
-                        + Period.between(currentDate, eventEnd).getDays() + " "
-                        + dayWord + " "
+                        + days + " "
+                        + getResources().getQuantityString(R.plurals.plural_day, days) + " "
                         + getString(R.string.left_bracket)
                         + eventBegin.format(formatterDateTypeOne) + " "
                         + getString(R.string.dash) + " "

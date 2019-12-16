@@ -87,12 +87,6 @@
         <item name="android:textColor">@color/light_olive_green</item>
     </style>
 
-    <style name="HelperText.Title3">
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:textSize">21sp</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
     <style name="HelperText.Title4">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/black_87</item>

@@ -24,6 +24,7 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.layouts.App;
 import com.example.layouts.R;
 import com.squareup.picasso.Picasso;
 
@@ -36,8 +37,6 @@ import java.io.IOException;
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
-
-    private static final String APP_PREFERENCES = "appSettings";
 
     private static final int REQUEST_EXTERNAL_STORAGE_PERMISSION = 0;
     private static final int REQUEST_TAKE_PHOTO = 1;
@@ -72,24 +71,24 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        sharedPreferences = getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        sharedPreferences = App.getSharedPreferences();
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_profile_toolbar);
         toolbar.inflateMenu(R.menu.profile_toolbar_menu);
 
         mProfilePhotoImageView = view.findViewById(R.id.profile_photo_image_view);
-        if (onLoadPhotoUri() == null) {
-            setImagePlaceholder();
-        } else {
+        if (onLoadPhotoUri() != null) {
             setImage(onLoadPhotoUri());
+        } else {
+            setImagePlaceholder();
         }
 
         mProfilePhotoImageView.setOnClickListener(v -> {
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE_PERMISSION);
-        }else {
-            showDialog();
-        }
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE_PERMISSION);
+            }else {
+                showDialog();
+            }
         });
     }
 
@@ -174,6 +173,7 @@ public class ProfileFragment extends Fragment {
 
     public void doDeleteAction(){
         setImagePlaceholder();
+        mCurrentPhotoUri = null;
     }
 
     public void doChangeAction(){

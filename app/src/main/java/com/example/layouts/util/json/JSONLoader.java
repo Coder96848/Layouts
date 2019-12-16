@@ -34,7 +34,7 @@ public class JSONLoader {
         return events.getEventList();
     }
 
-    public String importFromJSON(String fileName) {
+    private String importFromJSON(String fileName) {
 
         InputStreamReader streamReader = null;
         InputStream inputStream = null;

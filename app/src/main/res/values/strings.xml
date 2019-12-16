@@ -24,7 +24,6 @@
     <string name="fragment_help_category_help_text_view_text">Выберите категорию помощи</string>
     <string name="search_view_hint">Введите название организации</string>
     <string name="search_view_pager_text">Ключевые слова: мастер-класс, помощь \nРезультаты поиска: %1$d мероприятий</string>
-    <string name="change_fragment_exception_text">должен реализовывать интерфейс OnFragmentInteractionListener</string>
     <string name="search_hint">Hint</string>
     <string name="search_page_event_title">По мероприятиям</string>
     <string name="search_page_nko_title">По НКО</string>
@@ -36,7 +35,7 @@
     <string name="help_volunteer">Стать\nволонтером</string>
     <string name="help_prof">Проф.\nпомощь</string>
     <string name="help_money">Помочь\nденьгами</string>
-    <string name="likes_count">+%1$d</string>
+    <string name="plus">+</string>
     <string name="left_bracket">(</string>
     <string name="right_bracket">)</string>
     <string name="dash"> - </string>
@@ -59,10 +58,5 @@
         <item>Декабрь </item>
     </string-array>
 
-    <string-array name="formatDay">
-        <item> день </item>
-        <item> дня </item>
-        <item> дней </item>
-    </string-array>
 
 </resources>

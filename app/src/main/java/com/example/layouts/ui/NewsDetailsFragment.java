@@ -17,6 +17,8 @@ import com.example.layouts.interfaces.IMain;
 import com.example.layouts.R;
 import com.example.layouts.model.Event;
 
+import java.text.NumberFormat;
+
 public class NewsDetailsFragment extends Fragment {
 
     private Event event;
@@ -58,7 +60,7 @@ public class NewsDetailsFragment extends Fragment {
         TextView textViewAddress = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_nav);
         TextView textViewPhone = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_phone);
         TextView textViewDescription = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_detail_1);
-        TextView textView = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_detail_2);
+        //TextView textView = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_detail_2);
         TextView textViewLikes = view.findViewById(R.id.news_details_likes_count);
         TextView textViewEmail = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_link);
         TextView textViewWebsite = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_link_organization);
@@ -70,20 +72,22 @@ public class NewsDetailsFragment extends Fragment {
         textViewAddress.setText(event.getAddress());
 
         String stringPhone = "";
+        StringBuilder stringBuilder = new StringBuilder();
         for (String phone : event.getPhones()) {
             if (event.getPhones().size() > 1){
-                stringPhone = stringPhone + "\n" + phone;
+                stringPhone = stringBuilder.append(phone).append("\n").toString();
             }else{
                 stringPhone = phone;
             }
         }
         textViewPhone.setText(stringPhone);
         textViewDescription.setText(event.getDescription());
-
+        NumberFormat numberFormat = NumberFormat.getInstance();
         if(event.getLikesCount() >  5) {
-            textViewLikes.setText("+" + (event.getLikesCount()-5));
+            textViewLikes.setText(String.format("%s%s", getResources().getString(R.string.plus),
+                            numberFormat.format(event.getLikesCount() - 5)));
         }else {
-            textViewLikes.setText(String.valueOf(event.getLikesCount()));
+            textViewLikes.setText(numberFormat.format(event.getLikesCount()));
         }
 
         textViewEmail.setOnClickListener((v) -> {

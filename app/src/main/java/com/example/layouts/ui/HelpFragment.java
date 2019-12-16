@@ -1,6 +1,5 @@
 package com.example.layouts.ui;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,13 +36,7 @@ public class HelpFragment extends Fragment {
 
         ItemHelpData itemHelpData = ItemHelpData.getInstance();
         RecyclerView recyclerView = view.findViewById(R.id.fragment_help_category_help_recycler_view);
-        GridLayoutManager gridLayoutManager;
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            gridLayoutManager = new GridLayoutManager(view.getContext(), 2);
-        }
-        else {
-            gridLayoutManager = new GridLayoutManager(view.getContext(), 4);
-        }
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), getResources().getInteger(R.integer.help_column_count));
         HelpFragmentRecyclerAdapter adapter = new HelpFragmentRecyclerAdapter(itemHelpData.getItems());
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);

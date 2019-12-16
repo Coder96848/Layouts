@@ -9,6 +9,10 @@ public class EventsList {
     @SerializedName("EventsList")
     private ArrayList<Event> eventList;
 
+    public EventsList(ArrayList<Event> eventList) {
+        this.eventList = eventList;
+    }
+
     public ArrayList<Event> getEventList() {
         return eventList;
     }

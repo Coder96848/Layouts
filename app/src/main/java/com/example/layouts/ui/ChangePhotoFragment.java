@@ -29,23 +29,26 @@ public class ChangePhotoFragment extends DialogFragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_change_photo_dialog, container, false);
 
-        TextView cameraTextView = view.findViewById(R.id.change_photo_dialog_camera_text_view);
-        cameraTextView.setOnClickListener(v -> {
-            callback.onCameraAction();
-            dismiss();
-        });
+        if(callback != null) {
 
-        TextView deletePhotoTextView = view.findViewById(R.id.change_photo_dialog_delete_text_view);
-        deletePhotoTextView.setOnClickListener(v -> {
-            callback.onDeleteAction();
-            dismiss();
-        });
+            TextView cameraTextView = view.findViewById(R.id.change_photo_dialog_camera_text_view);
+            cameraTextView.setOnClickListener(v -> {
+                callback.onCameraAction();
+                dismiss();
+            });
 
-        TextView changePhotoTextView = view.findViewById(R.id.change_photo_dialog_upload_text_view);
-        changePhotoTextView.setOnClickListener(v -> {
-            callback.onChangeAction();
-            dismiss();
-        });
+            TextView deletePhotoTextView = view.findViewById(R.id.change_photo_dialog_delete_text_view);
+            deletePhotoTextView.setOnClickListener(v -> {
+                callback.onDeleteAction();
+                dismiss();
+            });
+
+            TextView changePhotoTextView = view.findViewById(R.id.change_photo_dialog_upload_text_view);
+            changePhotoTextView.setOnClickListener(v -> {
+                callback.onChangeAction();
+                dismiss();
+            });
+        }
 
         return view;
     }
@@ -53,11 +56,8 @@ public class ChangePhotoFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        try {
-            callback = (OnFragmentActionListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + getString(R.string.change_fragment_exception_text));
+        if(context instanceof OnFragmentActionListener) {
+            callback =(OnFragmentActionListener) context;
         }
     }
 }
