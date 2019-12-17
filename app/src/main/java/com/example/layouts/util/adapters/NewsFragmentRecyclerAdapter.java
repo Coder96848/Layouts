@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
+import com.example.layouts.interfaces.OnFragmentActionListener;
 import com.example.layouts.model.Event;
 import com.example.layouts.ui.NewsDetailsFragment;
 import com.squareup.picasso.Picasso;
@@ -24,12 +24,10 @@ public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragme
 
     private ArrayList<Event> selectedEvents;
     private Context context;
-    private FragmentManager fragmentManager;
     private ArrayList<String> date;
 
-    public NewsFragmentRecyclerAdapter(ArrayList<Event> selectedEvents, FragmentManager fragmentManager, Context context, ArrayList<String> date) {
+    public NewsFragmentRecyclerAdapter(ArrayList<Event> selectedEvents, Context context, ArrayList<String> date) {
         this.selectedEvents = selectedEvents;
-        this.fragmentManager = fragmentManager;
         this.context = context;
         this.date = date;
     }
@@ -85,10 +83,6 @@ public class NewsFragmentRecyclerAdapter extends RecyclerView.Adapter<NewsFragme
 
     private void openNewsDetailFragment(Event event, String date) {
         NewsDetailsFragment fragment = new NewsDetailsFragment(event, date);
-        fragmentManager
-                .beginTransaction()
-                .replace(R.id.activity_main_fragment_main, fragment, "DETAIL_NEWS_FRAGMENT")
-                .addToBackStack(null)
-                .commit();
+        ((OnFragmentActionListener) context).setFragment(fragment, "DETAIL_NEWS_FRAGMENT");
     }
 }

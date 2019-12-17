@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.layouts.util.json.JSONLoader;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class App extends Application {
 
@@ -13,7 +14,7 @@ public class App extends Application {
     private static JSONLoader jsonLoader;
     private static SharedPreferences sharedPreferences;
 
-    public static JSONLoader getJsonLoader() {
+    public static JSONLoader getJSONLoader() {
         return jsonLoader;
     }
 
@@ -26,5 +27,6 @@ public class App extends Application {
         super.onCreate();
         jsonLoader = new JSONLoader(this);
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        AndroidThreeTen.init(this);
     }
 }

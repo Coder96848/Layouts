@@ -1,6 +1,5 @@
 package com.example.layouts.ui;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,15 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.App;
-import com.example.layouts.interfaces.ICategory;
 import com.example.layouts.R;
+import com.example.layouts.interfaces.ICategory;
+import com.example.layouts.interfaces.OnFragmentActionListener;
 import com.example.layouts.model.Event;
 import com.example.layouts.model.EventsList;
 import com.example.layouts.util.DiffUtilsEvents;
@@ -29,26 +27,20 @@ import org.threeten.bp.Period;
 import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
-public class NewsFragment extends Fragment implements ICategory {
-
-
+public class NewsFragment extends Fragment {
 
     private ArrayList<String> selectedCategories;
     private EventsList eventsList;
     private RecyclerView recyclerView;
-    private SharedPreferences sharedPreferences;
-    private NewsFragmentRecyclerAdapter adapter;
     private JSONLoader jsonLoader;
+    private ICategory listener;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        jsonLoader = App.getJsonLoader();
+        jsonLoader = App.getJSONLoader();
         eventsList = new EventsList(jsonLoader.loadEvents());
-        sharedPreferences = App.getSharedPreferences();
     }
 
     @Override
@@ -62,12 +54,8 @@ public class NewsFragment extends Fragment implements ICategory {
         androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.fragment_news_toolbar);
         toolbar.inflateMenu(R.menu.news_toolbar_menu);
         if(getActivity() != null) {
-            final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             toolbar.setOnMenuItemClickListener(item -> {
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.activity_main_fragment_main, new FilterFragment(jsonLoader.loadCategories(), selectedCategories));
-                fragmentTransaction.addToBackStack("FILTER");
-                fragmentTransaction.commit();
+                ((OnFragmentActionListener) getActivity()).setFragment(new FilterFragment(), "FILTER");
                 return false;
             });
         }
@@ -75,19 +63,18 @@ public class NewsFragment extends Fragment implements ICategory {
         recyclerView = view.findViewById(R.id.fragment_news_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = (NewsFragmentRecyclerAdapter) recyclerView.getAdapter();
-        if (jsonLoader.loadCategories() != null && eventsList.getEventList() != null) {
-            if(selectedCategories == null) {
-                selectedCategories = onLoadCategories();
-                if(selectedCategories.size() == 0) {
-                    selectedCategories = new ArrayList<>(jsonLoader.loadCategories());
-                }
+        if(getActivity() instanceof ICategory) {
+            listener = (ICategory) getActivity();
+            if (jsonLoader.loadCategories() != null && eventsList.getEventList() != null) {
+                    selectedCategories = listener.onLoadCategories();
+                    if (selectedCategories.size() == 0) {
+                        selectedCategories.addAll(jsonLoader.loadCategories());
+                    }
+                setSelectedCategories(selectedCategories);
             }
-            setSelectedCategories(selectedCategories);
         }
     }
 
-    @Override
     public void setSelectedCategories(ArrayList<String> selectedCategories) {
         ArrayList<Event> selectedEvents = new ArrayList<>();
 
@@ -99,27 +86,16 @@ public class NewsFragment extends Fragment implements ICategory {
             }
         }
 
+        NewsFragmentRecyclerAdapter adapter = (NewsFragmentRecyclerAdapter) recyclerView.getAdapter();
         if (adapter == null) {
-            recyclerView.setAdapter(new NewsFragmentRecyclerAdapter(selectedEvents, getFragmentManager(), getContext(), getDate()));
+            recyclerView.setAdapter(new NewsFragmentRecyclerAdapter(selectedEvents, getActivity(), getDate()));
         } else {
             DiffUtil.DiffResult newsDiffResult = DiffUtil.calculateDiff(new DiffUtilsEvents(adapter.getSelectedEvents(), selectedEvents));
             adapter.setSelectedEvents(selectedEvents);
             newsDiffResult.dispatchUpdatesTo(adapter);
             this.selectedCategories = selectedCategories;
-            onSaveCategories(selectedCategories);
+            listener.onSaveCategories(selectedCategories);
         }
-    }
-
-    private void onSaveCategories(ArrayList<String> selectedCategories){
-        Set<String> categoriesSet = new HashSet<>(selectedCategories);
-        SharedPreferences.Editor e = sharedPreferences.edit();
-        e.putStringSet("selectedCategoriesSetKey", categoriesSet);
-        e.apply();
-    }
-
-    private ArrayList<String> onLoadCategories() {
-        Set<String> categoriesSet = sharedPreferences.getStringSet("selectedCategoriesSetKey", new HashSet<>());
-        return new ArrayList<>(categoriesSet);
     }
 
     private ArrayList<String> getDate(){
@@ -156,11 +132,8 @@ public class NewsFragment extends Fragment implements ICategory {
             }else {
                 strDate = months[eventBegin.getMonthValue() - 1] + " " + eventBegin.format(formatterDateTypeTwo);
             }
-
             resultStringList.add(strDate);
         }
-
         return resultStringList;
-
     }
 }

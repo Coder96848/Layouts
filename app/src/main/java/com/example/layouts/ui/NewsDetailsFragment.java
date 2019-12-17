@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.layouts.interfaces.IMain;
 import com.example.layouts.R;
+import com.example.layouts.interfaces.OnFragmentActionListener;
 import com.example.layouts.model.Event;
 
 import java.text.NumberFormat;
@@ -37,7 +37,7 @@ public class NewsDetailsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        ((IMain) getActivity()).setBottomNavigationGone();
+        ((OnFragmentActionListener) getActivity()).setBottomNavigationGone();
     }
 
     @Override
@@ -60,7 +60,6 @@ public class NewsDetailsFragment extends Fragment {
         TextView textViewAddress = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_nav);
         TextView textViewPhone = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_phone);
         TextView textViewDescription = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_detail_1);
-        //TextView textView = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_detail_2);
         TextView textViewLikes = view.findViewById(R.id.news_details_likes_count);
         TextView textViewEmail = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_link);
         TextView textViewWebsite = view.findViewById(R.id.fragment_news_details_scroll_view_text_view_link_organization);
@@ -115,6 +114,6 @@ public class NewsDetailsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        ((IMain) getActivity()).setBottomNavigationVisible();
+        ((OnFragmentActionListener) getActivity()).setBottomNavigationVisible();
     }
 }

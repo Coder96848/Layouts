@@ -19,10 +19,6 @@ public class ChangePhotoFragment extends DialogFragment {
 
     private OnFragmentActionListener callback;
 
-    public void setOnFragmentActionListener(OnFragmentActionListener callback) {
-        this.callback = callback;
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -30,7 +26,6 @@ public class ChangePhotoFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_profile_change_photo_dialog, container, false);
 
         if(callback != null) {
-
             TextView cameraTextView = view.findViewById(R.id.change_photo_dialog_camera_text_view);
             cameraTextView.setOnClickListener(v -> {
                 callback.onCameraAction();
@@ -56,8 +51,9 @@ public class ChangePhotoFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OnFragmentActionListener) {
-            callback =(OnFragmentActionListener) context;
+
+        if(getActivity() instanceof OnFragmentActionListener) {
+            callback = (OnFragmentActionListener) getActivity();
         }
     }
 }
