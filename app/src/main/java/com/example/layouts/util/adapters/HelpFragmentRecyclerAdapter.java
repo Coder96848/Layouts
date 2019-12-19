@@ -10,16 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.layouts.R;
-import com.example.layouts.model.ItemHelpData;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class HelpFragmentRecyclerAdapter extends RecyclerView.Adapter<HelpFragmentRecyclerAdapter.HelpItemViewHolder> {
 
-    private List<ItemHelpData> items;
+    private ArrayList<String> categories;
 
-    public HelpFragmentRecyclerAdapter(List<ItemHelpData> items){
-        this.items = items;
+    public HelpFragmentRecyclerAdapter(ArrayList<String> categories){
+        this.categories = categories;
     }
 
     @NonNull
@@ -31,13 +30,35 @@ public class HelpFragmentRecyclerAdapter extends RecyclerView.Adapter<HelpFragme
 
     @Override
     public void onBindViewHolder(@NonNull HelpItemViewHolder holder, int position) {
-        holder.helpTitleTextView.setText(items.get(position).getTitle());
-        holder.helpImageView.setImageResource(items.get(position).getImageId());
+        switch (categories.get(position)){
+            case "Дети":
+                holder.helpTitleTextView.setText(categories.get(position));
+                holder.helpImageView.setImageResource(R.drawable.child_image);
+                break;
+            case "Взрослые":
+                holder.helpTitleTextView.setText(categories.get(position));
+                holder.helpImageView.setImageResource( R.drawable.adult_image);
+                break;
+            case "Пожилые":
+                holder.helpTitleTextView.setText(categories.get(position));
+                holder.helpImageView.setImageResource(R.drawable.old_image);
+                break;
+            case "Животные":
+                holder.helpTitleTextView.setText(categories.get(position));
+                holder.helpImageView.setImageResource(R.drawable.animal_image);
+                break;
+            case "Мероприятия":
+                holder.helpTitleTextView.setText(categories.get(position));
+                holder.helpImageView.setImageResource(R.drawable.event_image);
+                break;
+
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return categories.size();
     }
 
     public class HelpItemViewHolder extends RecyclerView.ViewHolder {

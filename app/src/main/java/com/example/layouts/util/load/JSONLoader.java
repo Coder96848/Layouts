@@ -1,9 +1,8 @@
-package com.example.layouts.util.json;
+package com.example.layouts.util.load;
 
 import android.content.Context;
 
 import com.example.layouts.model.Categories;
-import com.example.layouts.model.Event;
 import com.example.layouts.model.EventsList;
 import com.google.gson.Gson;
 
@@ -28,13 +27,12 @@ public class JSONLoader {
         return categories.getCategoriesList();
     }
 
-    public ArrayList<Event> loadEvents(){
+    public EventsList loadEvents(){
         Gson gson = new Gson();
-        EventsList events = gson.fromJson(importFromJSON(EVENTS_FILE_NAME), EventsList.class);
-        return events.getEventList();
+        return gson.fromJson(importFromJSON(EVENTS_FILE_NAME), EventsList.class);
     }
 
-    private String importFromJSON(String fileName) {
+    public String importFromJSON(String fileName) {
 
         InputStreamReader streamReader = null;
         InputStream inputStream = null;
